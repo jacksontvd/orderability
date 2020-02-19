@@ -1,0 +1,239 @@
+\marginnote{Lecture 4; January 30, 2020}
+
+\begin{rmk}
+Note that if $R$ is an integral domain (e.g. $\ZZ$) then $R$ is contained in its field of
+fractions. In this case 
+\cref{KI,KII} and \cref{KIII} 
+for its field of fractions imply the corresponding versions of
+\cref{KI,KII} and \cref{KIII} for $R$.
+\end{rmk}
+\begin{rmk}
+We know this is true for LO groups. 
+As we have seen,
+we should think of LO as being a stronger version of torsion free.
+\end{rmk}
+
+\begin{thm}
+If $G$ is LO then $KG$ satisfies
+\cref{KI,KII} and \cref{KIII}.
+\label{thm:1.23}
+\end{thm}
+\begin{proof}
+Since \cref{KI} implies \cref{KIII} by the above remark
+we show \cref{KI} and \cref{KII}. 
+
+\cref{KI}: Suppose
+\begin{equation}
+\left(
+\sum_{i = 1}^m \al_i g_i
+\right)
+\left(\sum_{j = 1}^n \b_j h_j\right) = 1
+\end{equation}
+with $m$, $n$ not both $1$, $\al_i , \b_j \neq 0\in K$, distinct $g_i\in G$, and distinct
+$h_i\in G$.
+Note this product can be rewritten as the following sum with $mn$ terms:
+\begin{equation}
+\label{eqn:star}
+\sum_{i,j} \left(\al_i \b_j\right)\left(g_i h_j\right) \ .
+\end{equation}
+Assume WLOG that $h_1 < h_2 < \ldots < h_n$. Let $g_k h_l$ be a minimal element of
+\begin{equation}
+S = \left\{g_i h_j \st 1 \leq i\leq m , 1 \leq j\leq n\right\}
+\sub G
+\ .
+\end{equation}
+We know $h_1 < h_j$ for $j > 1$, so $g_k h_1 < g_k h_j$ for all $j > 1$.
+Therefore $l = 1$.
+Also $gh_1 = g'h_1$ which implies $g = g'$.
+Therefore $g_k h_1$ is the unique
+\begin{equation}
+\left(k,1\right)\in \left\{\left(i,j\right) \st 1\leq i \leq m , 1\leq j \leq n\right\}
+\end{equation}
+such that $g_k h_1$ is a minimal element of $S$.
+
+Similarly, there is a unique 
+\begin{equation}
+\left(r,n\right)\in \left\{\left(i,j\right) \st 1\leq i \leq m, 1\leq j\leq n\right\}
+\end{equation}
+such that $g_r h_n$ is a maximal element of $S$.
+\begin{clm}
+$g_k h_1 \neq g_r h_n$.
+\end{clm}
+If they were equal, then $r = k$, $n = 1$, so $m > 1$.
+So $g_k h_1 = g_r h_1$, and therefore $g_r = g_k$. But this cannot be the case since they
+are distinct by assumption.
+
+This implies that \eqref{eqn:star}
+has $\geq 2$ terms after cancellation, so it cannot be $1$.
+
+\cref{KII}: Now suppose
+\begin{equation}
+\left(\sum_{i = 1}^m \al_i g_i\right) \left(\sum_{j = 1}^n \b_j h_j\right) = 0
+\end{equation}
+for $m , n \geq 1$. Then there is a unique minimal element and nonzero coefficient, which
+means it is nonzero.
+\end{proof}
+
+\begin{con}[Isomorphism conjecture]
+If $G$ is torsion free, then $\ZZ G \simeqq \ZZ H$ implies $G\simeqq H$.
+\end{con}
+
+\begin{rmk}
+In \cite{hertweck} a finite counterexample to the conjecture for arbitrary groups was
+provided, i.e. it is shown that
+there exists finite $G$, $H$ such that $\ZZ G \simeqq \ZZ H$, $G\not\simeqq H$.
+\end{rmk}
+
+\begin{cor}[\cite{LR}]
+If $G$ is LO, then $G$ satisfies the isomorphism conjecture.
+\label{cor:1.24}
+\end{cor}
+\begin{proof}
+\Cref{thm:1.23} implies that $\ZZ G$ has no nontrivial units. Call $\cU_{\ZZ G}$ the group
+of units in $\ZZ G = \ZZ/ 2 \times G$. 
+Suppose $\ZZ G \simeqq \ZZ H$. \Cref{thm:1.23} says that $\ZZ G$ has no $0$-divisors. This
+implies $\ZZ H$ has no $0$-divisors, which means (by \cref{thm:1.22}) that $H$ is
+torsion-free.
+Now $H < \cU_{\ZZ H} \simeqq \cU_{\ZZ G} \simeqq \ZZ / 2 \times G$ which implies $H < G$
+(since $H$ is torsion-free), which implies $H$ is LO (since $G$ is), which implies
+$\cU_{\ZZ H} \simeqq \ZZ / 2 \times H$, which implies $\ZZ / 2 \times H \simeqq \ZZ / 2
+\times G$ which implies $H\simeqq G$ (since $H$, $G$ are torsion free).
+\end{proof}
+
+\begin{rmk}
+We might wonder if
+it is ever the case that (for $G\neq 1$)
+$\left(G * \ZZ\right) / \lr{\lr{w}} = 1$? This is known for 
+$G$ torsion free \cite{klyachko}.
+\end{rmk}
+\begin{cexm}
+If we consider the question of whether
+we can ever have $\left(A* B\right) / \lr{\lr{w}} = 1$ for $A$, $B$ nontrivial, a
+counterexample is given by:
+\begin{equation*}
+\ZZ / 2 * \ZZ / 3 / \left(a=b\right) \ .
+\end{equation*}
+\end{cexm}
+
+\section{BO's on \texorpdfstring{$\ZZ \times \ZZ$}{Z x Z}}
+
+Recall we have $2$ orders on $\ZZ$.
+Consider a line of slope $\al$ in $\ZZ\times \ZZ$.
+Then we have two cases.
+\begin{enumerate}
+\item $\al$ irrational: The associated positive cone is everything above the line.
+Specifically, $P\sub \ZZ\times \ZZ$ is given by
+\begin{equation}
+P = \left\{\left(m,n\right) \st n > m\al\right\} \ .
+\end{equation}
+It is easy to check that this is a positive cone. 
+This means there are uncountable many BO's on $\ZZ\times \ZZ$.
+
+\item $\al$ rational: Notice that now
+\begin{equation}
+\left\{\left(m,n\right) \st n = m\al\right\} \simeqq \ZZ < \ZZ\times \ZZ
+\ .
+\end{equation}
+Now let $P_0$ be one of the two positive cones on $\ZZ$. Then we can check that 
+\begin{equation*}
+P =P_0\dun \left\{
+\left(m,n\right) \st n > m\al
+\right\}
+\end{equation*}
+is a positive cone for $\ZZ \times \ZZ$.
+\end{enumerate}
+
+\begin{rmk}
+\begin{enumerate}
+\item (Up to reversal) these are all the BOs on $\ZZ \times \ZZ$. I.e. for $\al$ rational
+we get two, and for $\al$ irrational we get $4$.
+\item This generalizes in the obvious way to $\ZZ^n$.
+\end{enumerate}
+\end{rmk}
+
+\section{BO's on \texorpdfstring{$\RR$}{the real line}}
+
+Regard $\RR$ as a vector space on $\QQ$ with uncountable bases $\Lam$.
+Recall $\Lam$ exists by the axiom of choice.
+Therefore $\RR\sub \QQ^\Lam$. 
+In particular it is the elements of $\QQ^\Lam$ with only finitely many non-zero
+coordinates.
+There are uncountable many WO's on $\Lam$, 
+and each gives rise to a lexicographic BO on $\QQ^\Lam$.
+This gives us uncountably many BOs on $\RR$.
+
+\chapter{The space of left-orders on a group}
+
+The basic idea is that since lefts orders are determined by positive cones, we can give
+this space a topology. Consider a family of sets
+$\left\{X_\lam \st \lam \in \Lam\right\}$.
+Then write
+\begin{equation*}
+X = \prod_{\lam \in \Lam} X_\lam
+\end{equation*}
+and $\pi_\lam : X\to X_\lam$ for the projection. 
+If $X_\lam$ is a topological space, then $X$ can be given the product topology. This is
+the largest topology on $X$ such that $\pi_\lam$ is continuous for all $\lam \in \Lam$.
+So $X$ has subbasis
+\begin{equation}
+\left\{\pi_\lam^{-1}\left(U_\lam\right) = U_\lam \times \prod_{\mu\neq \lam X_\mu}
+\st U_\lam\sub X_\lam \text{ open}, \lam\in \Lam\right\}
+\ .
+\end{equation}
+
+\begin{thm*}
+If $X_\lam$ is compact for all $\lam \in \Lam$
+then $\prod_{\lam \in \Lam} X_\lam$ is compact.
+\end{thm*}
+
+\begin{rmk}[Exercises]
+\begin{enumerate}
+\item $X_\lam$ Hausdorff (for all $\lam \in \Lam$) implies $\prod_{\lam \in \Lam} X_\lam$ is
+Hausdorff.
+\item A space $X$ is totally disconnected if the only nonempty connected subspaces are
+singletons $\left\{x\right\}$ for $x\in X$.
+This is equivalent to the connected components of $X$ all being $\left\{x\right\}$.
+Show that $X_\lam$ totally disconnected (for all $\lam \in \Lam$)
+implies $\prod_{\lam \in \Lam} X_\lam$ is totally disconnected.
+\end{enumerate}
+\end{rmk}
+
+Let $X$ be a set, let $\cS\left(X\right)$ be the set of subsets of $X$ (i.e. the power
+set). Then we have a correspondence:
+\begin{align*}
+\cS\left(X\right) && \bij && \left\{f : X\to \left\{0,1\right\}\right\}\\
+\end{align*}
+which sends:
+\begin{align*}
+A\sub X && \bij && f_A : X\to \left\{0,1\right\}
+\end{align*}
+where
+\begin{equation*}
+f_A\left(x\right) = 
+\begin{cases}
+1 & x\in A \\ 
+0 & x\not \in A
+\end{cases}
+\ .
+\end{equation*}
+
+Give $\left\{0,1\right\}$ the discrete topology, and give 
+\begin{equation*}
+\cS\left(X\right) =
+\left\{0,1\right\}^X = 2^X = \prod_{x\in X} \left\{0,1\right\}
+\end{equation*}
+the product topology. Note $\left\{0,1\right\}$ is a compact, Hausdorff,
+totally-disconnected space, which means $\cS\left(X\right)$ is too.
+For $x\in X$ let 
+\begin{align*}
+U_x &= \pi_x^{-1}\left(1\right) = \left\{A\sub X \st x\in A\right\} \\
+V_x &= \pi_x^{-1}\left(0\right) = \left\{A\sub X \st x\not\in A\right\} \ .
+\end{align*}
+Note that $V_x = \cS\left(X\right)\minus U_x$ so $U_x$ and $V_x$ are open and closed.
+Then
+\begin{equation}
+\left\{U_x \st x\in X\right\}\un \left\{V_x \st x\in X\right\}
+\end{equation}
+is a subbasis for $\cS\left(X\right)$.
+
+

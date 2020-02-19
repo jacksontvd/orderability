@@ -1,0 +1,245 @@
+\marginnote{Lecture 7; February 11, 2020}
+
+\begin{proof}
+$\left(\implies\right)$: This direction is immediate. 
+
+$\left(\converse\right)$: Apply \cref{thm:BH}. Let $H < G$, $H\neq \left\{1\right\}$,
+finitely generated. 
+\begin{enumerate}[label = Case \numbers:]
+\item $\left[G : H\right] = \infty$. By hypothesis, $H$
+is indicable, so therefore (since $H$ is nontrivial) $G$ has quotient $\ZZ$.
+
+\item $\left[G : H\right]$ finite. By hypothesis there exists an epimorphism $\phi :G\to
+Q$ where $Q$ is LO. Therefore $Q$ is infinite, so $\phi\left(H\right)\neq
+\left\{1\right\}$, 
+(since $\left[Q : \phi\left(H\right)\right]$ is finite) and therefore $H$ has LO quotient
+$\phi\left(H\right)$.
+\end{enumerate}
+\end{proof}
+
+\begin{rmk}
+It turns out that $G$ BO implies $G$ is locally indicable.
+\end{rmk}
+
+\begin{rmk}
+We will eventually apply \cref{thm:2.13} to three-manifold groups.
+But first we look at surfaces.
+\end{rmk}
+
+\section{Surface groups}
+
+An $n$-manifold is a second-countable Hausdorff space $M$
+such that for all $x\in M$ $x$ has a neighborhood $U$ such that 
+either 
+\begin{align*}
+\left(U , x\right) \simeqq \left(\RR^n , 0\right)
+&& \text{or} &&
+\left(U , x\right) \simeqq \left(\RR^n_+ , 0\right) \ .
+\end{align*}
+Define the interior and boundary as:
+\begin{align*}
+\interior{M} &= \left\{x\in M \st x \text{ has a neighborhood of the first type}\right\}
+\\
+\p M &= \left\{x\in M \st x \text{ has a neighborhood of the second type}\right\}
+\ .
+\end{align*}
+Note that $\left(\interior{M}\right) \cap \p M = \emp$.
+Also  note that $\interior{M}$ is an $n$-manifold with empty boundary, and $\p M$ is an
+$\left(n-1\right)$-manifold with empty boundary.
+$M$ is \emph{closed} if $M$ is compact and $\p M = \emp$.
+
+A \emph{triangulation} of $M$ is a homeomorphism $M\simeqq \abs{K}$, where $K$
+is a locally finite simplicial complex.
+Whether or not a manifold has a triangulation is a subtle 
+question which wasn't settled until recently \cite{man}.
+
+\begin{fact}
+Every $n$-manifold has a triangulation for $n\leq 3$.
+\end{fact}
+This was shown for $n = 2$ in \cite{rado} and for $n=3$ in \cite{moise}.
+
+For us, a \emph{surface} is a $2$-manifold.
+There is the well-known classification of closed surfaces. 
+In particular, they all either look like $S^2$, $T^2$, a connect sum of copies of $T^2$,
+the projective plane $\PP^2$, or connect sums of copies of $\PP^2$.
+
+There is also a classification of non-compact surfaces.
+
+\begin{exm}
+Consider the plane. Now attach handles as in \cref{fig:loch}.
+This is an infinite genus non-compact surface.
+Now consider the infinite genus surface in \cref{fig:jacob}. 
+Are these homeomorphic?
+See \cref{rmk:ends} for the answer.
+
+\begin{figure}
+\begin{overlay}
+\pict{loch.pdf}{0.7}
+\toptext{$\ldots$}{5,0}
+\toptext{$\ldots$}{-5,0}
+\end{overlay}
+\caption{The Loch-Ness monster surface obtained by attached infinitely many handles to the
+plane.}
+\label{fig:loch}
+\end{figure}
+
+\begin{figure}
+\begin{overlay}
+\pict{jacob}{0.7}
+\end{overlay}
+\caption{The Jacob's ladder surface.}
+\label{fig:jacob}
+\end{figure}
+\label{exm:loch_jacob}
+\end{exm}
+
+Now we consider the following question.
+\begin{qn}
+Which surface groups $\pi_1\left(S\right)$ are LO?
+\end{qn}
+
+We want to use \cref{thm:BH}, so 
+we will consider finitely generated subgroups of surface groups.
+First, recall the following.
+
+\begin{lem}
+If $M$ is a closed $n$-manifold, $N$ is a connected $n$-manifold, and $f : M\to N$ is an
+injective map, then $f$ is a homeomorphism.
+\label{lem:2.14}
+\end{lem}
+
+This uses the Jordan-Brouwer theorem for $S^{n-1}$s in $S^n$.
+For $M$ compact, $N$ Hausdorff, it is enough to show $f$ is onto.
+
+\begin{lem}
+Let $S$ be a non-compact surface. Then $H_2\left(S\right) = 0$.
+\label{lem:2.15}
+\end{lem}
+
+\begin{proof}
+Triangulate $S$. Then we can get compact surfaces
+$S_1 \sub S_2 \ldots \sub S$ such that
+\begin{equation*}
+S = \bun_{i = 1}^n S_i \ .
+\end{equation*}
+$\p S_i\neq \emp$ by \cref{lem:2.14}, so $S_i\simeq$ some $1$-complex. Therefore
+$H_2\left(S_i\right) = 0$, for all $i$. And every $2$-cycle in $S$ is contained in some
+$S_i$. Therefore $H_2\left(S\right) = 0$.
+\end{proof}
+
+\begin{lem}
+Let $S$ be a surface, $\dd$ a circle component of $\p S$ such that
+$\pi_1\left(\dd\right)\to \pi_1\left(S\right)$ is not injective. Then $S\simeqq D^2$.
+\label{lem:2.16}
+\end{lem}
+
+\begin{proof}
+For $S$ compact, this is true by the classification.
+So let $S$ be non-compact.
+Let $S^* = S\un D^2$ glued along $\dd$.
+Then we have that the following commutes
+\begin{equation*}
+\begin{tikzcd}
+\pi_1\left(\dd\right)\ar{r}\ar{d}{\simeqq}&
+\pi_1\left(S\right)\ar{d}\\
+H_1\left(\dd\right)\ar{r}&
+H_1\left(S\right)
+\end{tikzcd}
+\ .
+\end{equation*}
+But now since
+$\pi_1\left(\dd\right)\to \pi_1\left(S\right)$ is not injective, $H_1\left(\dd\right)\to
+H_1\left(S\right)$ cannot be injective either. 
+So now applying Mayer-Vietoris, we get
+\begin{equation}
+H_2\left(S^*\right) \simeqq \ker \left(H_1\left(\dd\right)\to H_1\left(S\right)\right) \ ,
+\end{equation}
+so by definition this is nonzero. But $S^*$ is noncompact, so this contradicts
+\cref{lem:2.15}.
+\end{proof}
+
+\begin{rmk}
+Have you answered the question from \cref{exm:loch_jacob} yet?
+The answer has to do with the number of \emph{ends}, which is defined as follows.
+Remove compact subsets and count the remaining components.
+If we minimize the number of components, then this is the number of ends.
+This is clearly a topological invariant.
+The loch-ness monster has $1$, and Jacob's ladder has $2$.
+
+We can also define the notion of the number of ends of a group.
+As it turns out,
+$e\left(G\right) = 0$ iff $G$ is finite.
+Then, for example, we have
+\begin{align*}
+e\left(\ZZ\right) &= 2 \\
+e\left(\ZZ^n\right) &= 1 \qquad \left(n\geq 2\right) \\
+e\left(F_n\right) &= \infty
+\ .
+\end{align*}
+Then it turns out that
+for all $G$, $e\left(G\right) = 0,1,2$, or $\infty$.
+\label{rmk:ends}
+\end{rmk}
+
+\begin{thm}[Compact core theorem for surfaces]
+Let $S$ be a connected surface with $\pi_1\left(S\right)$ finitely generated. Then there
+exists a compact connected $S_0 \linj{i} S$ such that 
+$i_* : \pi_1\left(S_0\right) \to \pi_1\left(S\right)$ is an isomorphism. 
+We call $S_0$ a \emph{compact core} of $S$.
+\label{thm:2.17}
+\end{thm}
+
+\begin{proof}
+Triangulate $S$. Let $\gamma_1 , \ldots , \gamma_n$ 
+be simplicial loops in $S$ such that
+$\left\{ \left[\gamma_1\right] , \ldots , \left[\gamma_n\right]\right\}$
+are generators of $\pi_1\left(S\right)$. 
+Let $N$ be a regular neighborhood of $\bun_{i = 1}^n \gamma_i$ in $S$.
+$N$ is a compact surface with $\p N \neq \emp$ (and we can in fact assume it is connected)
+and $\pi_1\left(N\right) \to \pi_1\left(S\right)$ is onto.
+
+Let $S_0$ be $N$ union with
+any disk components of $S$ cut along $\p N$.
+$S_0$ is a compact surface, and $\pi_1\left(S_0\right)\to \pi_1\left(S\right)$ is onto.
+If $\p S_0 = \emp$ then we are done since $S_0 = S$.
+
+So suppose $\p S_0 \neq \emp$. Let $\dd$ be a component of $\p S_0$.
+Since $\pi_1\left(S_0\right)\to \pi_1\left(S\right)$ is onto, $\dd$ separates $S$. 
+(If not, there exists a loop $\gamma \sub S$ such that $\gamma \trans \dd$ is a single
+point. Therefore $\gamma$ cannot be in $S_0$ but $\pi_1\left(S_0\right)\to
+\pi_1\left(S\right)$ is onto.)
+
+Let $S_1$ be the component of $S$ cut along $\dd$ such that $S_0\not\sub S_1$. By
+definition of $S_0$ $S_1$ is not a disk.
+Therefore by \cref{lem:2.16} $\pi_1\left(\dd\right)\to \pi_1\left(S_1\right)$ is
+one-to-one.
+If $S_0$ is a disk, then $\pi_1\left(S\right) = \left\{1\right\}$ and we are done. So
+assume $S_0$ is not a disk. Then $\pi_1\left(\dd\right)\to \pi_1\left(S_0\right)$ is
+injective.
+So do this for all the boundary components $\dd$ of $S_0$. Then we see by Van-Kampen that
+this is just a big free product:
+\begin{equation*}
+\pi_1\left(S\right)\simeqq 
+\colim\left(
+\begin{cd}
+\pi_1\left(S_1\right)
+\ar{drr}
+&
+\pi_1\left(S_2\right)
+\ar{dr}
+&
+\pi_1\left(S_3\right)
+\ar{d}
+&
+\ldots
+&
+\pi_1\left(S_k\right)
+\arrow{dll}
+\\
+&& \pi_1\left(S_0\right) &&
+\end{cd}
+\right)
+\end{equation*}
+but by definition 
+this means $\pi_1\left(S_0\right)\to \pi_1\left(S\right)$ is injective.
+\end{proof}

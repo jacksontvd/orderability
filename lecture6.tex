@@ -1,0 +1,286 @@
+\marginnote{Lecture 6; February 6, 2020}
+
+\begin{proof}
+First notice $1\not\in P$ since
+$1\not\in Q\left(F\right)$ for any finite $F\sub G\minus \left\{1\right\}$.
+
+Now we show $g,h\in P$ implies $gh\in P$.
+Let $F = \left\{g,h\right\}$. Then there are
+$\e\left(g\right),\e\left(h\right)\in\left\{\pm 1\right\}$
+such that 
+\begin{align*}
+S\left(g^{\e \left(g\right)} , h^{\e \left(h\right)}\right) \sub P
+&&
+S\left(g^{\e\left(g\right)} , h^{\e\left(h\right)}\right)^{-1} \cap P = \emp
+\ .
+\end{align*}
+Therefore $\e\left(g\right) = \e\left(h\right) = +1$, which  implies
+$gh\in S\left(g^{\e \left(g\right)} , h^{\e\left(h\right)}\right)
+\sub P$.
+
+Now we show $P\cap P^{-1} = \emp$. Let $g\in P$, and $F = \left\{g\right\}$. Therefore
+$S\left(g\right)\sub P$, which means $S\left(g\right)^{-1} \cap P = \emp$, so $g^{-1}
+\not\in P$.
+
+Finally we show $P\dun P^{-1} G\minus \left\{1\right\}$. Take $g\in G$ such that $g\neq
+1$. Let $F = \left\{g\right\}$. Then there exists $\e = \pm 1$ such that
+$S\left(g^\e\right)\sub P$ (and $S\left(g^{-1}\right)\cap P = \emp$) which implies $g^\e
+\in P$.
+\end{proof}
+\end{Proof}
+
+\begin{rmk}
+There  exists an analogue of this for BO.
+\end{rmk}
+
+\begin{thm}
+$G$ is BO if and only if for all finite $F\sub G\minus \left\{1\right\}$ there is some $\e
+: F\to \left\{\pm 1\right\}$ such that $1\not\in T\left(F , \e\right)$
+where 
+$T\left(F , \e\right)$ is the smallest semigroup which
+\begin{enumerate}[label = (\iii)]
+\item contains $S\left(F , \e\right)$, and
+\item for all $g,h\in T\left(F , \e\right)$, $g,h,g^{-1}, g^{-1} h  g \in T\left(F ,
+\e\right)$.
+\end{enumerate}
+\label{thm:2.4}
+\end{thm}
+
+\begin{exr}
+Prove \cref{thm:2.4}.
+\end{exr}
+
+Let $P$  be a property of groups. A group $G$ is \emph{locally $P$} if and only if every
+finitely generated subgroup of $G$ has property $P$.
+(So $\loc\left(\loc\left(P\right)\right) \equiv \loc\left(P\right)$.)
+$P$ is a \emph{local property} if $\loc\left(P\right)\implies P$.
+
+\begin{thm}
+$G$ is locally LO (resp. BO) if and only if $G$ is LO (resp. BO).
+\label{thm:2.5}
+\end{thm}
+
+\begin{proof}
+$\left(\converse\right)$: LO and BO are inherited by subgroups.
+
+$\left(\implies\right)$: Let $G$ be a finite set contained in $G\minus \left\{1\right\}$.
+Then $\lr{F} < G$ is finitely generated. 
+$G$ $\loc\left(\LO\right)$ implies $\lr{F}$ is LO. Therefore there exists $\e$ such that 
+\eqref{eqn:5*} holds (from \cref{thm:2.3}). This is true for all $F$, so $G$ is LO by
+\cref{thm:2.3}.
+The argument for BO is similar, using \cref{thm:2.4} instead.
+\end{proof}
+
+\begin{cor}
+An abelian group is BO iff it is torsion free.
+\label{cor:2.6}
+\end{cor}
+
+\begin{proof}
+$\left(\implies\right)$: This follows from \cref{lem:1.3}.
+
+$\left(\converse\right)$ $G$ is LO iff $G$ is $\loc\left(\LO\right)$.
+For $H$ finitely generated inside of torsion free $G$, then $H\simeqq \ZZ^n$, so it is LO.
+\end{proof}
+
+\begin{cor}
+An arbitrary free group is LO.
+\label{cor:2.7}
+\end{cor}
+
+\begin{proof}
+Let $F$ be a free group. For $H$ a finitely generated subgroup of $F$, $H\simeqq F_n$ for
+some $n$.
+Then $H$ is LO by \cref{cor:2.7}, so $F$ is LO by \cref{thm:2.5}.
+\end{proof}
+
+\begin{thm}
+Let $\left\{G_\lam\right\}_{\lam\in \Lam}$ be a collection of groups. 
+Then $G_\lam$ is LO for all $\lam \in \Lam$ if and only if $\bfprod_{\lam \in \Lam}
+G_\lam$ is LO.
+\label{thm:2.8}
+\end{thm}
+
+\begin{proof}
+$\left(\converse\right)$: $G_\lam < \bfprod_{\lam \in \Lam} G_\lam$.
+
+$\left(\implies\right)$: There exists a homomorphism 
+\begin{equation*}
+\begin{cd}
+G = \bfprod_{\lam \in \Lam}G_\lam \ar{r}{\phi}&
+\prod_{\lam \in \Lam} G_\lam \\
+g_\lam \ar[mapsto]{r}&
+\left(1 , \ldots , 1 , g_\lam , 1 , \ldots\right)
+\end{cd}
+\ .
+\end{equation*}
+So we get a SES
+\begin{equation}
+\begin{cd}
+1\ar{r}&
+H\ar{r}&
+\bfprod_\Lam G_\lam \ar{r}{\phi}&
+\prod_\Lam G_\lam \ar{r}&
+1
+\end{cd}
+\end{equation}
+where $H = \ker \phi$.
+By the Kurosh subgroup theorem
+\begin{equation*}
+H = \left(\bfprod_\mu H_\mu\right) * F
+\end{equation*}
+where $H_\mu$ is a subgroup of a conjugate of $G_{\lam_\mu}$ in $G$, and $F$ is a free
+group. But $H = \ker \phi$, and $\restr{\phi}{G_\lam}$ is injective for all $\lam \in
+\Lam$.
+Therefore for all $\lam \in \Lam$ and $g\in G$ we have
+$H\cap g^{-1} G_\lam g = \left\{1\right\}$. Therefore $H = F$.
+
+But now $G_\lam$ LO for all $\lam \in \Lam$ implies
+$\prod_{\lam \in \Lam} G_\lam$
+is LO by \cref{thm:1.4}, and $F = H$ is LL by \cref{cor:2.7}, so $G$ is LO by 
+\cref{thm:1.13}.
+\end{proof}
+
+Let $P$ be a property of groups. A group $G$ is residually $P$, $\res\left(P\right)$, if
+and only if for all $g\in G\minus \left\{1\right\}$ there exists an epimorphism $\phi :
+G\to H$ such that $H$ has property $P$, and $\phi\left(g\right)\neq 1$.
+\begin{rmk}
+Note that
+$P$ implies $\res\left(P\right)$, and  $\res\left(\res \left(P\right)\right)$ implies
+$\res\left(P\right)$.
+\end{rmk}
+
+We say $P$ is a \emph{residual property} if and only if $\res\left(P\right)$ implies $P$.
+
+\begin{exm}
+Finiteness is not a residual property. 
+E.g. $\ZZ$ is $\res\left(\text{finite}\right)$.
+\end{exm}
+
+\begin{lem}
+If $P$ is closed under taking subgroups and direct products, then $P$ is a residual
+property.
+\label{lem:2.9}
+\end{lem}
+
+\begin{cor}
+LO and BO are residual properties.
+\label{cor:2.10}
+\end{cor}
+
+\begin{proof}[Proof of \cref{lem:2.9}]
+Suppose $G$ is $\res\left(P\right)$. Then for all $g\in G\minus \left\{1\right\}$
+there is an epimorphism $\phi_g : G\to H_g$ such that 
+$H_g$ has $P$, and $\phi_g\left(g\right)\neq 1$.
+The collection of these $\left\{\phi_g \st g\in G\minus \left\{1\right\}\right\}$ induces
+a homomorphism
+\begin{equation*}
+\phi : G \to \prod_{g\in G\minus \left\{1\right\}} H_g
+\ .
+\end{equation*}
+Then this is injective, and $\phi_g\left(g\right)\neq 1$.
+$H_g$ has $P$ for all $g\in G\minus \left\{1\right\}$. Therefore $\prod_{g\in G\minus
+\left\{1\right\}} H_g$ has $P$.
+But 
+\begin{equation*}
+G\simeqq \phi\left(G\right)< \prod_{g\in G\minus \left\{1\right\}} H_g
+\end{equation*}
+so $G$ has $P$.
+\end{proof}
+
+\begin{rmk}
+Residual properties are related to areas of  active research. For example the
+geometrization conjecture is related to residual finiteness of $3$-manifolds.
+\end{rmk}
+
+\begin{rmk}
+Let $G$ be a group. Let $\FQ\left(G\right)$ consist of the finite quotients of $G$.
+Then the following is  an open question. Let $F_2$ be a free group of rank $2$. If $G$ is
+a residually finite group  such that $\FQ\left(G\right) = \FQ\left(F_2\right)$ is
+$G\simeqq F_2$?
+Note that $\FQ\left(F_2\right)$ consists of the finite groups generated by two elements.
+So this is really quite concrete.
+
+Another open question is if $G_1$ and $G_2$ are residually finitely presented, then does
+$\FQ\left(G_1\right) = \FQ\left(G_2\right)$ imply $G_1 \simeqq G_2$?
+\end{rmk}
+
+\begin{exm}
+$\LO\left(\ZZ^n\right)$ and $\LO\left(F_n\right)$ are both the cantor set.
+\end{exm}
+
+\begin{exm}
+Let $B_n$ denote the braid group.
+As it turns out
+$\LO\left(B_n\right)$ has isolated points \cite{dubrov}.
+\end{exm}
+
+The following is a strengthening of the fact that LO is a local property. 
+
+\begin{wrn}
+At this point it is convenient to make the convention that $\left\{1\right\}$ is
+\emph{not} LO.
+\end{wrn}
+
+\begin{thm}[Burns-Hale]
+$G$ is LO iff every non-trivial finitely generated subgroup $H< G$ has an LO quotient.
+% \label{thm:2.11}
+\label{thm:BH}
+\end{thm}
+
+\begin{proof}
+$\left(\implies\right)$: $G$ is LO implies $H$ is LO.
+
+$\left(\converse\right)$: $F = \left\{g_1 , \ldots , g_n\right\}\sub G\minus
+\left\{1\right\}$ for $n\geq 1$.
+We show by induction on $n$ that the condition on $F$ in \cref{thm:2.3} holds.
+Let $n = 1$. Then $\lr{g_1}$ has an LO quotient by assumption. 
+Therefore $g_1$ has infinite  order, so $1\not\in S\left(g_1\right)$. 
+Now suppose $n > 1$. By assumption, there exists a nontrivial homomorphism 
+$\phi : \lr{g_1 , \ldots , g_n} \to L$ where $L$ is LO.
+For some $m$ there exists
+\begin{equation*}
+\phi\left(g_i\right) = 
+\begin{cases}
++1 & 1 \leq i\leq m \\
+-1 & m< i \leq n
+\end{cases}
+\end{equation*}
+
+By the induction hypothesis there exists $\e_1 , \ldots , \e_m\in \left\{\pm 1\right\}$
+such that $1\not \in S\left(\left\{g_i^{\e_i}  \st 1\leq i\leq m\right\}\right)$.
+Let $<$ be an LO on $L$. Define  $\e_i \in \left\{\pm 1\right\}$ ($m < i \leq n$) 
+so that
+\begin{equation}
+\phi\left(g_i^{\e_i}\right) > 1
+\end{equation}
+Then $1\not \in S\left(\left\{g_i^{\e_i} \st 1\leq i\leq n\right\}\right)$.
+\end{proof}
+
+A group $G$ is \emph{indicable} if either $G = \left\{1\right\}$ or there is an
+epimorphism $G\to \ZZ$.
+
+\begin{cor}
+$G$ is locally indicable implies $G$ is LO.
+\label{cor:2.12}
+\end{cor}
+
+\begin{rmk}
+Free groups are $\loc\left(\text{indicable}\right)$ so this gives  another proof that free
+groups are LO.
+\end{rmk}
+
+\begin{rmk}
+Note that $G$ having an LO quotient does not imply 
+$G$ is LO. 
+\begin{cexm}
+$\ZZ * \ZZ / 2$ has LO quotient, but is not LO.
+\end{cexm}
+We do however have:
+\end{rmk}
+
+\begin{thm}
+Let $G$ be a group such that every finitely generated subgroup of infinite index is
+indicable. Then $G$ is LO if and only if $G$ has an LO quotient.
+\label{thm:2.13}
+\end{thm}

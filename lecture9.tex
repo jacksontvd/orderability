@@ -1,0 +1,366 @@
+\chapter{Orderings of the braid group}
+\marginnote{Lecture 9 (Hannah Turner); February 18, 2020}
+
+We will follow \cite{braids}.
+
+Let $z_1 , \ldots , z_n\in \DD^2$. A \emph{braid on $n$ strands} is a subset $\b \sub
+\DD^2 \times I$ such that $\b$ is a union of smoothly embedded intervals (called
+\emph{strands}) in $\DD^2 \times I$ such that
+\begin{enumerate}
+\item $\b \cap \left(D^2 \times \left\{1\right\}\right) = \left\{\left(z_1 , 1\right) ,
+\ldots , \left(z_n , 1\right)\right\}$,
+\item $\b\cap \left(D^2 \times \left\{0\right\}\right) = \left\{\left(z_1,0\right) , \ldots
+, \left(z_n , 0\right)\right\}$,
+\item $\b \trans \left(\DD^2 \times \left\{t\right\}\right)$ in $n$ points.
+\end{enumerate}
+
+We should think of braids as these strands weaving around one another
+as in \cref{fig:braid}.
+
+\begin{figure}
+\begin{overlay}
+\pict{braid.pdf}{0.5}
+\end{overlay}
+\caption{A braid on $3$ strands.}
+\label{fig:braid}
+\end{figure}
+
+We say two braids are equivalent if there is a deformation from one to the other through
+braids. There is an operation on braids called \emph{stacking}. This takes two braids and
+stacks them to make a new braid.
+
+\begin{thm}[Artin]
+The set of $n$-strand braids form a group $B_n$ with group operation given by stacking. 
+In particular, it has the following presentation:
+\begin{equation}
+B_n = \lr{\sigma_1 , \ldots , \sigma_{n-1} \st 
+\begin{matrix}
+\abs{i-j} > 1 \implies \sigma_i \sigma_j = \sigma_j \sigma_i \ ,\\
+\sigma_i \sigma_{i+1} \sigma_i = \sigma_{i+1}\sigma_i \sigma_{i+1}
+\end{matrix}
+}\ .
+\end{equation}
+\end{thm}
+
+Geometrically, the generators $\sigma_i$ correspond to braids as in 
+\cref{fig:generators}.
+Now a braid $\b$ is an equivalence class of words in the $\sigma_i$.
+
+\begin{figure}
+\begin{overlay}
+\pict{generators.pdf}{0.1}
+\toptext{$i$}{-0.8,2}
+\toptext{$i+1$}{1,2}
+\toptext{$\ldots$}{-2,0}
+\toptext{$\ldots$}{2,0}
+\end{overlay}
+\caption{The generator $\sigma_i$ of $B_n$.}
+\label{fig:generators}
+\end{figure}
+
+
+There is a map $B_n \to \MCG\left(D_n\right)$ from the braid group to the mapping class
+group of $D_n$, i.e. the group of orientation preserving homeomorphisms of $\DD^2$ with
+$n$ punctures such that the punctures are fixed setwise, and $\p \DD^2$ is fixed
+pointwise.
+The map sends the generators 
+\begin{equation*}
+\sigma_i \mapsto h_{\sigma_i}: D_n\acted
+\end{equation*}
+to half-Dehn twists about the straight arc connecting $z_i$ and $z_{i+1}$.
+See \cref{fig:dehn}.
+
+\begin{figure}
+\begin{overlay}
+\pict{dehn.pdf}{0.8}
+\toptext{$\lto{h_{\sigma_i}}$}{0,0}
+\toptext{$z_i$}{-4,0.4}
+\toptext{$z_{i+1}$}{-2.5,0.4}
+\toptext{$z_{i+1}$}{3,-0.38}
+\toptext{$z_{i}$}{3.8,0.35}
+\end{overlay}
+\caption{The half-Dehn twist about the straight arc connecting $z_i$ and $z_{i+1}$.}
+\label{fig:dehn}
+\end{figure}
+
+\begin{clm}
+This map is an isomorphism.
+\end{clm}
+
+\section{Dehornoy's ordering}
+
+\begin{defn}
+A braid word $w$ is said to be $\sigma$-positive (resp. $\sigma$-negative) if,
+among the letters $\sigma^{\pm 1}_i$ that occur in $w$, the one with lowest index occurs
+with only positive (resp. negative) exponent, i.e. $\sigma_i$ occurs but not $\sigma_i^{-1}$.
+In this case we say
+$w$ is $\sigma_i$ positive.
+\end{defn}
+
+\begin{rmk}
+Usually we don't care for which $i$ the word is $\sigma_i$ positive. In this scenario we
+just say $\om$ is $\sigma$-positive.
+\end{rmk}
+
+\begin{exm}
+$\sigma_1 \sigma_2$ and $\sigma_1 \sigma_2^{-1}$ are both $\sigma_1$ positive.
+$\sigma_1^{-1}\sigma_2$ is $\sigma_1$-negative.
+\end{exm}
+
+\begin{wrn}
+Some braids are neither, e.g. $\sigma_2^{-1} \sigma_3 \sigma_2$.
+\end{wrn}
+
+\begin{defn}
+We say $1<_{Deh} \b$ if $\b$ is $\sigma$-positive.
+\end{defn}
+
+Note $\b_1 <_{Deh} \b_2$ iff $1 <_{Deh} \b_1 \b_2$.
+
+\begin{thm}[Dehornoy]
+The above definition for
+$<_{Deh}$ defines an LO on $B_n$.
+\end{thm}
+
+\begin{proof}[Proof idea]
+We use the following properties to prove the theorem.
+\begin{itemize}
+\item Property A (Acyclicity): a $\sigma$-positive word is always nontrivial.
+\item Property C (Comparison): Every nontrivial braid of $B_n$ admits an $n$-strand
+representative word that is $\sigma$-positive or $\sigma$-negative.
+\end{itemize}
+
+Write $P_n$ for the positive braids on $n$-strands. We will show that $P_n$ is a positive
+cone. 
+
+\begin{enumerate}
+\item $P_n$ is closed: let $\b_1 , \b_2 \in B_n$. If $\b_1$ is $\sigma_i$-positive, $\b_2$
+is $\sigma_j$ positive for $i \leq j$. Then $\b_1 \b_2$ is $\sigma_i$ positive. For example:
+\begin{align}
+\b_1 &= \sigma_1\sigma_2 \sigma_3 \sigma_2^{-1} \\
+\b_2 &= \sigma_2 \sigma_3 \sigma_2 \sigma_3^{-1} \\
+\b_1 \b_2 &= \sigma_1\sigma_2 \sigma_3\sigma_3 \sigma_2\sigma_3^{-1}
+\ .
+\end{align}
+
+\item $B_n\minus \left\{1\right\} = P_n \un P_n^{-1}$: property A implies
+$1\not\in P_n$ and then property C implies this.
+
+\item Disjoint union: Suppose $\b \in P_n \cap P_n^{-1}$. Then $\b^{-1}\in P_n$, so $\b
+\b^{-1} = 1\in P_n$ which is a contradiction.
+\end{enumerate}
+\end{proof}
+
+\begin{prop}
+$B_n$ for $n\geq 3$ is not BO.
+\end{prop}
+
+\begin{proof}
+Define 
+\begin{equation*}
+\Del_n = \left(\sigma_1 \ldots \sigma_{n-1}\right) \left(\sigma_1 \ldots
+\sigma_{n-2}\right) \ldots \left(\sigma_1 \sigma_2\right)\sigma_1
+\ .
+\end{equation*}
+For example, see 
+\cref{fig:del} for $\Del_4$.
+\begin{figure}
+\begin{overlay}
+\pict{del.pdf}{0.3}
+\end{overlay}
+\caption{The braid $\Del_4$.}
+\label{fig:del}
+\end{figure}
+\begin{clm}
+$\Del_n \sigma_i = \sigma_{n-i} \Del_n$.
+\end{clm}
+Now suppose $\cless$ is a BO on $B_n$. WLOG $\sigma_1 \cless \sigma_{n-1}$ implies
+\begin{equation*}
+\ubr{\Del_n \sigma_1 \Del_n^{-1}}{\sigma_{n-1}} \cless \ubr{\Del_n \sigma_{n-1}
+\Del_n^{-1}}{\sigma_1}
+\end{equation*}
+so $\sigma_{n-1} \cless \sigma_1$, so
+\begin{equation*}
+\Del_n \sigma_i \Del_n^{-1} = \sigma_{n-i} \Del_n \Del_n^{-1} = \sigma_{n-i}
+\end{equation*}
+which is a contradiction.
+\end{proof}
+
+\begin{rmk}
+\begin{enumerate}
+\item For each $n$, two elements of
+$\left(B_n , <_{Deh}\right)$ can be compared in polynomial
+time (in the length of words). 
+\item This ordering has applications to knot theory. If $\b \in B_n$ and $\b <
+\Del_n^{-6}$ or $\b > \Del_n^g$, then its closure $\hat \b$ is prime.
+\end{enumerate}
+\end{rmk}
+
+\begin{defn}
+\begin{enumerate}
+\item An LO group $\left(G , <\right)$ is \emph{Conradian} if for all $g,h > 1$, there is some
+$p\in \ZZ^+$ with $h < gh^p$.
+\item $\left(G , <\right)$ is \emph{Archimedean} if for all $g,h > 1$, there is $p\in
+\ZZ^+$ with $g < h^p$.
+\end{enumerate}
+\end{defn}
+
+\begin{prop}
+$\left(B_n , <_{Deh}\right)$ is not Conradian nor Archimedean.
+\end{prop}
+
+% This is disturbing since it means there are $\al,\b>1$ such that
+% for all $p$, $\b > \al \b^p$.
+
+\section{Nielsen-Thurston orderings on \texorpdfstring{$B_n$}{the braid group}}
+
+\begin{defn}
+Suppose $G\acts \RR$ by orientation preserving homeomorphisms and there is $x\in \RR$ with
+$\Stab_G\left(x\right) = \left\{1\right\}$. Then $\left(G , <_x\right)$ is defined by
+declaring $g<_x g'$ iff $g\left(x\right) <_\RR g'\left(x\right)$.
+\end{defn}
+
+\begin{rmk}
+\begin{enumerate}
+\item This is an LO since $G < \homeo^+\left(\RR\right)$. 
+\item Using $y\in \RR$, $y\neq x$ could give a different ordering.
+\end{enumerate}
+\end{rmk}
+
+The goal is to get an action $B_n\acts \RR$.
+
+We can give $D_n$
+a hyperbolic metric. $\ttilde{D_n}$ is a subset of $\HH^2$. Now
+compactify $\HH^2$ by adding $S^1_\infty$. Compactify $\ttilde {D_n}$ by adding in limit
+points of lifts of $\p D_n$. This is a closed disk $\ttilde D_n$.
+$\p \ttilde{D_n}$ has two types of points:
+\begin{enumerate}
+\item limit points, and 
+\item arcs which cover $\p D_n$.
+\end{enumerate}
+
+Now pick a basepoint $\star$. For each $b\in B_n$, take $\b \mapsto h_\b: D_n\acted$. Note that
+$h_\b$ has many lifts in $\ttilde{D_n}$. Pick one $\ttilde h_b$ that fixes the basepoint.
+Now since $\p \ttilde{D_n} \minus \left\{\star\right\}\simeqq \RR$, we can restrict
+$\tilde h_\b$ to $\p\ttilde{D_n} \minus \left\{\star\right\}$ to get an action on $\RR$.
+Then it turns out this is all well-defined.
+
+\begin{defn}
+An LO $<$ on $B_n$ is of \emph{Nielsen-Thurston type} if there is some $x\in \RR$ such
+that for all $\b$, $\b'\in B_n$ $\b < \b'$ iff $\b\left(x\right) <_\RR \b'\left(x\right)$.
+\end{defn}
+
+\begin{fact}
+\begin{enumerate}
+\item Some choices $x\in \RR$ have non-trivial stabilizer. These cannot give an ordering. 
+\item Some choices $x\neq y\in \RR$ give the same ordering.
+\item Uncountably many of them are distinct.
+\end{enumerate}
+\end{fact}
+
+\section{Isolated orderings}
+
+Recall LO's on $G$ correspond to positive cones. 
+
+\begin{defn}
+An ordering $<$ in $\LO\left(G\right)$ is \emph{finitely determined} if there is a finite
+subset $S = \left\{g_1 , \ldots , g_k\right\}\sub G$ such that $<$ is the unique LO on $G$
+such that $S$ is positive.
+\end{defn}
+
+\begin{exm}
+\begin{enumerate}
+\item $\left(\ZZ , <\right)$ is determined by choosing $\left\{1\right\}\sub P$.
+\item If $P\sub G$ is finitely generated as a semi-group then the order $<$ determined by 
+$P$ is finitely determined.
+\item $K = \lr{a,b \st aba^{-1} = b^{-1}}$ is determined by $\left\{a,b\right\}$.
+\end{enumerate}
+\end{exm}
+
+\begin{prop}
+A points in $\LO\left(G\right)$ is isolated iff $<$ is finitely determined.
+\end{prop}
+
+\begin{proof}
+$\left(\converse\right)$: Suppose that $< \in \LO\left(G\right)$ is finitely determined by
+$f_1 , \ldots ,f_m$.
+Recall $\LO\left(G\right)\sub \left\{0,1\right\}^G$. 
+A basis for the topology is given by sets of the form:
+\begin{equation}
+B = \left\{ \left(\ubr{g_1 , \ldots , g_k}{\text{yes}} , \ubr{h_1 , \ldots ,
+h_l}{\text{no}} , \ubr{\ldots}{\text{whatever}}\right)\right\}
+\cap \LO\left(G\right) \ .
+\label{eqn:B}
+\end{equation}
+Now we can impose that
+\begin{enumerate}
+\item The set of $g\in G$ which we say ``yes'' to is closed,
+\item never say ``yes'' to both $g$ and $g^{-1}$
+\item never say ``no'' to $g$ and $g^{-1}$.
+\end{enumerate}
+Then for
+\begin{equation}
+U = \left\{\left(f_1 , \ldots , f_m , f_1^{-1} , \ldots , f_m , \ldots\right)\right\}
+\end{equation}
+there is no other order inside $U$, so $<$ is isolated.
+
+$\left(\implies\right)$: Assume $< \in \LO\left(G\right)$ is isolated. There is an open
+set $U$ such that $<$ is the only element of $\LO\left(G\right)$. Write $<\in B\sub U$
+where $B$ is of the form \eqref{eqn:B}. Then 
+\begin{equation}
+P\sups \left\{g_1 , \ldots , g_k , h_1^{-1} , \ldots , h_l^{-1}\right\}
+\end{equation}
+so $<$ is finitely determined.
+\end{proof}
+
+\begin{defn}[\cite{dubrov}]
+Let $P_{DD}$ be the set of $\b\in B_3$ such that $\b$ is $\sigma_1$-positive or
+$\sigma_2$-negative.
+\end{defn}
+
+\begin{thm}
+$P_{DD}$ is a positive cone, and is generated as a semigroup by $\sigma_1 \sigma_2$ and
+$\sigma_2^{-1}$.
+\end{thm}
+
+\begin{proof}
+We will assume that a $\sigma_i$-positive word is never trivial.
+We will also assume that either $\b$ is $\sigma_1$-positive or $\sigma_1$-negative or
+$\sigma_1$-free.
+Note that this implies $\sigma_1$-free braids are always $\sigma_2$-positive or
+$\sigma_2$-negative.
+
+Now we show $P_{DD}$ is a positive cone.
+Write $Q = \lr{\sigma_1 \sigma_2 , \sigma_2^{-1}}$. This is a semigroup. Write $\b_1
+=\sigma_1 \sigma_2$ and $\b_2 = \sigma_2^{-1}$.
+It is immediate that $Q\sub P_{DD}$. Now we show the opposite. 
+We have two cases:
+\begin{enumerate}[label = Case \numbers.]
+\item $\b$ or $\b^{-1}$ is $\sigma_2$-positive:
+Then $\b = \sigma_2^p$ for some $p\in \ZZ\minus \left\{0\right\}$. For $p > 0$ we have
+$\b^{-1}\in Q$, and for $p < 0$ we have $\b\in Q^{-1}$.
+
+\item $\b$ is $\sigma_1$-positive: then 
+there are
+$m_i\in \ZZ$, $1\leq i\leq k$, 
+such that
+\begin{align}
+\b &= \sigma_2^{m_1}\sigma_1 \sigma_2^{m_2} \sigma_1 \ldots \sigma_1 \sigma_2^{m_k}
+\\
+&= \b_2^{P_1} \b_1 \b_2^{P_2}\b_1 \ldots  \b_1 \b_2^{P_k}
+\end{align}
+for some 
+$P_i\in \ZZ$.
+Then we have
+\begin{equation}
+\b_2 \b_1^2 \b_2 = \b_1
+\end{equation}
+so we can cancel things and keep replacing $\b_1$ by this, until all exponents of $\b_2$
+are positive, so $\b\in Q$.
+
+\item $\b$ is $\sigma_1$-negative: so $\b^{-1}$ is $\sigma_1$-positive, so $\b^{-1}\in Q$
+by case 2.
+\end{enumerate}
+Then this means $<_{DD}$ is an ordering on $B_n$, so it is isolated in
+$\LO\left(G\right)$.
+\end{proof}

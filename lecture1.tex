@@ -1,0 +1,337 @@
+\chapter{Orders on groups; basic definitions and properties}
+\marginnote{Lecture 1; January 21, 2020}
+
+The book for the course is \cite{book}.
+
+Recall that a \emph{strict total order} (STO) on a set $X$ is a binary relation $<$
+which satisfies:
+\begin{enumerate}
+\item $x < y$ and $y < z$ implies $x< z$;
+\item $\forall x , y\in X$ exactly one of:
+$x < y$, $y  <x$, $x = y$, holds.
+\end{enumerate}
+
+A \emph{left order} (LO) on a group $G$
+is an STO such that $g < h$ implies $fg < fh$ for all $f\in G$.
+$G$ is \emph{left-orderable} (LO) if there exists an LO on $G$. 
+We similarly define a \emph{right order} (RO) 
+and \emph{right orderability} (RO). 
+A \emph{bi-order} (BO) on $G$ is an LO on $G$ that is also an RO.
+
+\begin{rmk}
+\begin{enumerate}
+\item If $G$ is abelian, $<$ is a LO iff $<$ is an RO iff $<$ is a BO.
+\item If $<$ is an LO on $G$, then $\cless$ defined by:
+\begin{equation}
+g\cless h \iff h^{-1} < g^{-1}
+\end{equation}
+is an RO on $G$.
+Therefore $G$ is LO iff $G$ is RO.
+We will stick to LO's.
+\item For $H < G$, an LO (resp. BO) on $G$ induces an LO (resp. BO) on $H$.
+\end{enumerate}
+\end{rmk}
+
+\begin{exm}
+$\left(\RR , +\right)$ with the usual $<$ is BO. The subgroups $\ZZ < \QQ < \RR$ are also
+BO.
+\end{exm}
+
+\begin{lem}
+Let $<$ be an LO on $G$. Then
+\begin{enumerate}
+\item $g > 1$, $h > 1$ implies $gh > 1$;
+\item $g > 1$ implies $g^{-1} < 1$;
+\item $<$ is a BO iff 
+$
+\left(g < h \implies f^{-1} gf < f^{-1} h f \forall f\in G\right)
+$ (i.e. $<$ is conjugation invariant).
+\end{enumerate}
+\label{lem:1.1}
+\end{lem}
+
+\begin{proof}
+\begin{enumerate}
+\item $h > 1$ implies $gh > g\cdot 1 g > 1$.
+\item $g > 1$ implies $g^{-1} g > g^{-1}$ implies $1 > g^{-1}$.
+\item $\left(\implies\right)$ is immediate. $\left(\converse\right)$: We need to show $<$
+is a RO. $g < h$ implies $fg < fh$ implies $f^{-1} \left(fg\right)f <
+f^{-1}\left(fh\right)f$ which implies $gf < hf$ as desired.
+\end{enumerate}
+\end{proof}
+
+\begin{lem}
+If $<$ is a BO on $G$, then
+\begin{enumerate}
+\item $g < h$ implies $g^{-1} > h^{-1}$;
+\item $g_1 < h$, $g_2 < h_2$ implies $g_1 g_2 < h_1 h_2$.
+\end{enumerate}
+\label{lem:1.2}
+\end{lem}
+
+\begin{proof}
+\begin{enumerate}
+\item If $g < h$, then $g^{-1} g < g^{-1} h$, which implies $1 < g^{-1} h$, which implies
+$1\cdot h^{-1} < g^{-1}$, which implies $h^{-1} < g^{-1}$.
+\item $g_2 < h_2$ implies $g_1 g_2 < g_1 h_2 < h_1 h_2$.
+\end{enumerate}
+\end{proof}
+
+\begin{wrn}
+These don't necessarily true for LO's.
+\end{wrn}
+
+\begin{lem}
+If $G$ is LO then it is torsion free.
+\label{lem:1.3}
+\end{lem}
+
+\begin{proof}
+Consider $g\in G\minus \left\{1\right\}$. If $g > 1$, then $g^2 > g > 1$, and similarly
+for all $n\geq 1$, $g^n > 1$.
+Similarly $g < 1$ implies $g^n < 1$ for all $n\geq 1$.
+\end{proof}
+
+So LO is not preserved under taking quotients (e.g. $\ZZ \to \ZZ / n$).
+
+Consider an indexed family of groups $\left\{G_\lam \st \lam \in \Lam\right\}$.
+Recall that the direct product
+\begin{equation}
+\prod_{\lam \in \Lam} G_\lam = \left\{
+\left(g_\lam\right)_{\lam \in \Lam}
+\right\}
+\end{equation}
+with multiplication defined co-ordinatewise.
+
+Recall a \emph{well-order} (WO) on a set $X$ is a STO $\cless$ on $X$ such that if $A \sub
+X$ and $A\neq \emp$ then there exists $a_0\in A$ such that $a_0 \cless a$ for all $a\in
+A\minus \left\{a_0\right\}$.
+Recall that the axiom of choice is equivalent to every set having a WO.
+
+\begin{thm}
+$G_\lam$ has a LO (resp. BO) for all $\lam \in \Lam$ iff $\prod_{\lam \in \Lam}G_\lam$
+has a LO (resp. BO).
+\label{thm:1.4}
+\end{thm}
+
+\begin{proof}
+$\left(\converse\right)$: $G\lam < \prod_\lam G_\lam$ so we are finished.
+
+$\left(\implies\right)$: Choose a WO $\cless$ on $\Lam$, and order $\prod_\lam G_\lam$
+lexicographically. Let $g= \left(g_\lam\right)$, $h = \left(h_\lam\right)$, $g\neq h$.
+Then $\lam_0$ be the $\cless$-least element of $\Lam$ such that $g_{\lam_0} \neq
+h_{\lam_0}$. Then define $g < h$ iff $g_{\lam_0} < h_{\lam_0}$ (in $G_{\lam_0}$).
+Then $<$ is an LO (resp. BO) on $\prod_\lam G_\lam$. Left (resp. left and right)
+invariance is clear.
+Now we show transitivity. Suppose $f < g$, $g < h$.
+Let $\lam_0$ be the $\cless$-least element of $\Lam$ such that $f_{\lam_0} \neq
+g_{\lam_0}$.
+Let $\mu_0$ be the $\cless$-least element of $\Lam$ such that $g_{\mu_0}\neq h_{\mu_0}$.
+\begin{enumerate}
+\item $\left(\lam_0 \cleq \mu_0\right)$: Then $f_\lam = g_\lam = h_\lam$ for all $\lam
+\cless \lam_0$.
+Then $g_{\lam_0}$ is $<$ (resp. $=$) $h_{\lam_0}$ if $\lam_0 = \mu_0$ (resp. $\lam_0
+\cless \mu_0$).
+So $f_{\lam_0} < g_{\lam_0}\leq h_{\lam_0}$, and therefore $f_{\lam_0} < h_{\lam_0}$.
+
+\item $\left(\mu_0 < \lam_0\right)$: This follows similarly.
+\end{enumerate}
+\end{proof}
+
+Let $\sum_{\lam in \Lam} G_\lam$ be the \emph{direct sum of} $\left\{G_\lam\right\}$. Recall this
+is the subgroup of $\prod_{\lam\in\Lam} G_\lam$ consisting of elements such that all but
+finitely many co-ordinates are $1$.
+
+\begin{cor}
+$G_\lam$ is LO (resp. BO) for all $\lam \in \Lam$ iff $\sum_{\lam\in \Lam} G_{\lam}$ is LO
+(resp. BO).
+\label{cor:1.5}
+\end{cor}
+
+\begin{cor}
+Free abelian groups are BO.
+\label{cor:1.6}
+\end{cor}
+
+\begin{proof}
+Free abelian groups on $\Lam$ are $\sum_{\lam \in \Lam} \ZZ$.
+\end{proof}
+
+Let $<$ be an LO on $G$.
+The \emph{positive cone} $P = P_{<}$ of $<$ is $\left\{g\in G\st g > 1\right\}$.
+
+\begin{lem}
+Let $P$ be as above.
+\begin{enumerate}
+\item $g,h\in P$, implies $gh\in P$ (i.e. $PP\sub P$).
+\item $G = P\dun P^{-1} \dun\left\{1\right\}$.
+\item $<$ is a BO on $G$ iff $f^{-1} P f \sub P$ for all $f\in G$.
+\end{enumerate}
+\label{lem:1.7}
+\end{lem}
+
+\begin{proof}
+\begin{enumerate}
+\item This follows from \cref{lem:1.1} (1).
+\item This follows from \cref{lem:1.1} (2).
+\item This follows from \cref{lem:1.1} (3).
+\end{enumerate}
+\end{proof}
+
+We say $P\sub G$ is a \emph{positive cone} if $P$ satsfies the conditions in
+\cref{lem:1.7}.
+
+\begin{lem}
+Let $P\sub G$ be a positive cone. Then $g < h$ implies $g^{-1} h \in P$ defines a LO
+$<$ on $G$ (With $P_< = P$).
+\label{lem:1.8}
+\end{lem}
+
+\begin{proof}
+$<$ is a STO, so:
+\begin{enumerate}[label = (\iii)]
+\item $f < g$, $g < h$ implies $f^{-1} g\in P$, $g^{-1} h\in P$, which implies (by the
+first property) that $\left(f^{-1} g\right)\left(g^{-1} h\right)\in P$, which implies $f <
+h$.
+
+\item By the second property, for all $g,h\in G$ exactly one of the following holds:
+$g^{-1} h\in P$, $g^{-1} h \in P^{-1}$, and $g^{-1}h = 1$.
+Equivalently, $g<h$, $h < g$ (since $h^{-1} g\in P$), and $g = h$.
+Now we show left invariance. $g < h$ implies $g^{-1} h\in P$, but $g^{-1} h = \left(g^{-1}
+f^{-1}\right)\left(fh\right)$ which implies $fg < fh$.
+\end{enumerate}
+\end{proof}
+
+\Cref{lem:1.7,lem:1.8} show that:
+\begin{align}
+\left\{\text{LO's on }G \right\}
+&&\bij&&
+\left\{\text{positive cones in } G\right\}
+\\
+\left\{\text{BO's on }G \right\}
+&&\bij&&
+\left\{\text{conjugacy-invariance positive cones in }G\right\}
+\ .
+\end{align}
+
+Consider the free group of rank $n$, $F_n$.
+\begin{thm}
+$F_2$ is LO.
+\end{thm}
+
+\begin{Proof}[Proof by Sunic]
+Write $F_2 = F\left(a,b\right)$.
+$g\in F_2$ implies we can write it as a reduced word
+\begin{equation}
+\left(a^{m_1}\right)b^{n_1} \ldots a^{m_k}\left(b^{n_k}\right)
+\end{equation}
+for $k\geq 0$, $m_i , n_i\in \ZZ\minus \left\{0\right\}$.
+Recall $1$ is the empty word, $k = 0$.
+Let $e\left(g\right)$ be the number of syllables in $g$ with positive exponent, minus
+the number of syllables in $g$ with negative exponent. Then define $j\left(g\right)$ so be
+the number of $a^mb^n$'s in $f$, minus the number of $b^n a^m$s in $G$. So
+$j\left(g\right) = 0$, or $\pm 1$.
+For example:
+\begin{align}
+j\left(a^* \ldots a^*\right) &= 0 \\
+j\left(b^* \ldots b^*\right) &= 0 \\
+j\left(a^* \ldots b^*\right) &= 1 \\
+j\left(b^* \ldots a^*\right) &= -1 \ .
+\end{align}
+Finally define
+\begin{equation}
+\tau\left(g\right) = e\left(g\right) + j\left(g\right) \ .
+\end{equation}
+Note that
+\begin{align}
+e\left(g^{-1}\right) = - e\left(g\right)
+&&
+j\left(g^{-1}\right)=  - j\left(g\right) \ .
+\end{align}
+
+\begin{lem}
+If $g\neq 1$, then $\tau\left(g\right)\equiv 1\pmod{2}$.
+\label{lem:1.10}
+\end{lem}
+\begin{proof}
+$e\left(f\right)$ is congruent to the number of syllables mod $2$, and $j\left(g\right)$
+is congruent to the number of syllables $+1$ mod $2$.
+\end{proof}
+
+\begin{lem}
+$\abs{\tau\left(gh\right) - \tau\left(g\right) - \tau\left(h\right)} \leq 1$.
+\label{lem:1.11}
+\end{lem}
+\begin{proof}
+If $gh$ or $g$ or $h$ $=1$ we are done. So suppose $gh, g, h\neq 1$.
+Clearly $e\left(gh\right)= e\left(g\right) + e\left(h\right)+ 
+\begin{Bmatrix}
+0\\ 1 \\ -1
+\end{Bmatrix}
+$.
+Similarly:
+\begin{equation}
+j\left(gh\right) = j\left(g\right) + j\left(h\right) + 
+\begin{Bmatrix}
+0\\ 1 \\ -1
+\end{Bmatrix}
+\ .
+\end{equation}
+Therefore:
+\begin{equation}
+\abs{\tau\left(gh\right) - \tau\left(g\right) - \tau\left(H\right)}\leq 2
+\end{equation}
+so by \cref{lem:1.10}
+we have
+\begin{equation}
+\abs{\tau\left(gh\right) - \tau\left(g\right)-  \tau\left(h\right)}\leq 1 \ .
+\end{equation}
+\end{proof}
+\begin{rmk}
+\Cref{lem:1.11} says that $\tau : F_2 \to \ZZ \left(< \RR\right)$ is what is called a
+\emph{quasi-morphism}.
+\end{rmk}
+
+Define $P\sub F_2$ by
+\begin{equation}
+P = \left\{g\in F_2 \st \tau\left(g\right) > 0\right\} \ .
+\end{equation}
+Then $F_2 = P\dun P^{-1} \dun \left\{1\right\}$ by \cref{lem:1.10} and that
+$\tau\left(g^{-1}\right) = -\tau\left(g\right)$.
+Then $PP \sub P$ by \cref{lem:1.11} since
+\begin{equation}
+\tau\left(gh\right) \geq \tau\left(g\right) + \tau\left(h\right) - 1 \geq 1 \ .
+\end{equation}
+Therefore $P$ is a positive cone for a LO on $F_2$.
+\end{Proof}
+
+\begin{cor}
+Any countable free group is LO.
+\label{cor:1.12}
+\end{cor}
+
+\begin{proof}
+A countable free group is a subgroup of $F_2$.
+\end{proof}
+
+\begin{rmk}
+\begin{enumerate}
+\item $\tau\left(a^{-1} b\right) = 1$, so $a^{-1}b > 1$, so $b > a$. On the other hand,
+$\tau\left(ab^{-1}\right) = 1$, so $ab^{-1} > 1$, so $b^{-1} > a^{-1}$.
+So $\tau$ does not define a BO on $F_2$.
+
+\item We will see later that all free groups are LO.
+
+\item Even later we will see that all free groups are BO.
+\end{enumerate}
+\end{rmk}
+
+\begin{thm}
+Let $1\to H\to G\to Q\to 1$ be a short-exact sequence of groups. Then
+\begin{enumerate}
+\item $H$, $Q$ LO implies $G$ is LO;
+\item if $Q$ is BO and $H$ has a BO that is invariant under conjugation in $G$ then $G$
+is BO.
+\end{enumerate}
+\label{thm:1.13}
+\end{thm}

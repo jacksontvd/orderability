@@ -1,0 +1,215 @@
+\marginnote{Lecture 8; February 14, 2020}
+
+\begin{rmk}
+There is an analogue of this theorem for three-manifolds as well. This is related to the
+the \emph{Whitehead manifold}, which is 
+a contractible three-manifold not homeomorphic to $\RR^3$. Whitehead invented this as a
+counterexample to his own theorem. Professor Cameron says this tells us it is okay to make
+mistakes as long as you're the one to find the counterexample.
+\end{rmk}
+
+\begin{rmk}
+Now \cref{thm:BH}
+implies that if $G$ is locally indicable (and nontrivial) then $G$ is LO.
+\end{rmk}
+
+\begin{thm}
+Let $S$ be a surface not homeomorphic to $\RP^2$. Then $\pi_1\left(S\right)$ is locally
+indicable.
+\end{thm}
+
+\begin{proof}
+Let $H < \pi_1\left(S\right)$, $H$ finitely generated and nontrivial.
+Then we want to show it maps to $\ZZ$. The point is that there exists a connected covering
+space $\tilde S \to S$ such that $\pi_1\left(\tilde S\right)\simeqq H$. By
+\cref{thm:2.17}, $H\simeqq \pi_1\left(S_0\right)$ for $S_0$ a compact surface. Of course
+$\pi_1\left(S_0\right)\neq \left\{1\right\}$ (since $H$ was).
+
+Now we claim $S_0\not\simeqq \RP^2$. If it was, then $\tilde S\simeqq \RP^2$, so $S\simeqq
+\RP^2$, which is a contradiction. Not by the classification of compact surfaces, there
+exists an epimorphism $H_1\left(S_0\right) \surj \ZZ$, 
+so we can just pre-compose with the map $\pi_1\left(S_0\right)
+\surj H_1\left(S_0\right)$, so we get an epimorphism $H\surj \ZZ$.
+\end{proof}
+
+\begin{cor}
+Let $S$ be a surface. Then $\pi_1\left(S\right)$ is LO 
+if and only if $\pi_1\left(S\right)\neq \left\{1\right\}$ and $S\not\simeqq \RP^2$.
+\label{cor:2.19}
+\end{cor}
+
+\begin{rmk}
+\begin{enumerate}
+\item If $S$ is the Klein bottle then $\pi_1\left(S\right)$ is locally indicable. But
+$\pi_1\left(S\right)$ is not BO (there exists $a\in \pi_1\left(S\right)$ such that $a$ is
+conjugate to $a^{-1}$).
+This shows:
+\begin{enumerate}
+\item locally indicable and nontrivial does not imply BO, and
+\item there is no analog of Burns Hale for BO.
+\end{enumerate}
+\item Locally indicable (and nontrivial) implies LO, but the converse is false. We will
+see that there are three manifolds $M$ with $H_1\left(M\right)$ finite\footnote{So in
+particular $\pi_1\left(M\right)$ is not locally indicable.} and
+$\pi_1\left(M\right)$ LO. 
+
+\item It can be shown that if $S$ is a non-compact surface, then $\pi_1\left(S\right)$ is
+free. For example, $\RR\minus $ a cantor set has $\pi_1$ isomorphic to a free group on
+a countably infinite number of generators. 
+% But it has uncountably many ends.
+
+\item It can be shown that $\pi_1\left(S\right) = 1$ if and only if $S\simeqq S^2$
+or $D^2 \minus X$ for $X$ a closed subgroup of $S^1$.
+\end{enumerate}
+\end{rmk}
+
+\begin{rmk}
+Colin Adams is a 
+knot theorist who gives lectures in different personas. E.g. a sleazy
+real-estate agent selling property in hyperbolic space.
+Once he attended a class posing as a student. He started heckling the lecturer, and
+eventually the  lecturer said ``well if you know so much, you come teach the class!'' so
+he did. Some of the students were responding to his heckling, saying ``shut up man, he's doing a
+great job!'' so they were in for surprise when he revealed who he is.
+\end{rmk}
+
+\chapter{Three-manifolds}
+
+Our three-manifolds will always be connected, orientable. They may have boundary and may
+be non-compact. 
+We will always be working in the PL or smooth category.
+
+Let $M_1$ and $M_2$ be oriented $3$-manifolds with balls $B_i \sub \interior{M_i}$, $B_i\simeqq B^3$
+for $i = 1 , 2$.
+The \emph{connect sum} of $M_1$ and $M_2$ is the oriented manifold 
+\begin{equation*}
+M_1\csum M_2 = \left(M_1 \minus \interior{B_1}\right)\un_h \left(M_2 \minus \interior{B_2}\right)
+\end{equation*}
+for $h : \p B_1 \to \p B_2$ an orientation-reversing homeomorphism.
+It turns out that $M_1 \csum M_2$ is well-defined (up to orientation-preserving
+homeomorphism). The operation $\csum$ is associative, and commutative. Note that $M\csum S^3
+\simeqq M$ for all $M$.
+Also note that
+\begin{equation*}
+\pi_1\left(M_1 \csum M_2\right)\simeqq \pi_1\left(M_1\right) * \pi_1\left(M_2\right) \ .
+\end{equation*}
+
+We say
+$M$ is \emph{prime} if $M\simeqq M_1 \csum M_2$ 
+implies $M_1$ or $M_2\simeqq S^3$.
+
+\begin{thm}[Kneser\cite{kneser},Milnor\cite{M_prime}]
+Let $M$ be a compact, oriented $3$-manifold. Then 
+\begin{equation*}
+M\simeqq \bcsum_{i = 1}^n M_i
+\end{equation*}
+(orientation preserving (op))
+where $M_i$ is prime (and not $\simeqq S^3$) for $1\leq i\leq n$. Moreover the $M_i$ are
+unique up to order and orientation-preserving homeomorphism.
+\end{thm}
+
+Note $S^3$ corresponds to $n = 0$.
+
+\begin{rmk}
+In the same paper \cite{kneser} Kneser
+proved some other things which relied on Dehn's lemma. So he was looking closer at Dehn's
+proof, and found some holes. He wrote to Dehn who was on vacation to find out that he
+agreed there was something fishy. Thus ensued a great correspondence between the two
+trying to fix it. It was eventually fixed in \cite{P_dehn}.
+\end{rmk}
+
+For $M$ compact, and
+\begin{equation*}
+M\simeqq \bcsum_{i = 1}^n M_i
+\end{equation*}
+where the $M_i$ are prime, we have
+\begin{equation*}
+\pi_1\left(M\right)\simeqq \bfprod_{i = 1}^n \pi_1\left(M_i\right) \ .
+\end{equation*}
+So $\pi_1\left(M\right)$ is LO iff $\pi_1\left(M_i\right)$ is LO (for $1\leq i\leq n$).
+This is also true for BO. 
+
+\begin{exr}
+Show $\pi_1\left(M\right)$ is locally indicable iff $\pi_1\left(M_i\right)$ is locally
+indicable for all $1\leq i\leq n$.
+[Hint: USe the Kurosh subgroup theorem.]
+\end{exr}
+
+The upshot is that for $M$ compact, to answer LO, BO, or locally indicable, we may assume $M$ is prime.
+
+\begin{rmk}
+There are noncompact three manifolds that cannot be expressed as $\#$ of prime manifolds.
+\end{rmk}
+
+$M$ is irreducible if every $S^2\sub M$ bounds a $B^3\sub M$.
+
+\begin{fact}
+$M$ is irreducible iff $M$ is prime
+and not homeomorphic (op) to $S^1 \times S^2$.
+\end{fact}
+
+The point being that $S^1 \times S^2$ is prime.
+
+\begin{thm}[Perelman\cites{perelman1,perelman2,perelman3}]
+Let $M$ be a closed $3$-manifold with universal cover $\tilde M$. 
+\begin{enumerate}
+\item If $\pi_1\left(M\right)$ is finite, then $\tilde M\simeqq S^3$ and the action of
+$\pi_1\left(M\right)$ on $S^3$ is as a subgroup of $\SO\left(4\right)$.
+
+\item If $\pi_1\left(M\right)$ is infinite and $M$ is irreducible, then $\tilde M\simeqq
+\RR^3$.
+\end{enumerate}
+\end{thm}
+
+\begin{cor}[Poincar\'e conjecture]
+If $M$ is closed and $\pi_1\left(M\right) = 1$, $M\simeqq S^3$.
+\end{cor}
+
+\begin{rmk}
+We know $\pi_1\left(M\right)$ infinite implies $\tilde M$ is noncompact. 
+Then $M$ irreducible
+implies $\pi_2\left(M\right) = 0$ (as we will see soon) so by standard stuff, $\tilde M$
+is contractible. 
+But, there are contractible non-compact $3$-manifolds without boundary which are not
+homeomorphic to $\RR^3$.
+\end{rmk}
+
+The $3$-manifolds with $\pi_1$ finite can be completely described. They're all Seifert
+fiber spaces.
+
+\begin{exm}
+Let $p,q\in \ZZ$ such that $p\geq 2$ $\left(p,q\right) = 1$. 
+Recall we have a $\ZZ / p$ action on $\CC^2$ by 
+\begin{equation*}
+\left(z,w\right)\mapsto \left(e^{2\pi i / p} z , e^{2\pi q i/ p} w\right)
+\end{equation*}
+Now the restriction of this action to $S^3$ is free, so we can quotient by it to get the
+lens space $L\left(p,q\right)$. Then
+\begin{equation*}
+\pi_1\left(L\left(p,q\right)\right) = \ZZ / p \ .
+\end{equation*}
+Nonetheless, Alexander showed that $L\left(5,1\right) \not\simeqq L\left(5,2\right)$.
+\end{exm}
+
+\begin{thm}[Redemeister]
+$L\left(p,q\right)$ is homeomorphic to $L\left(p , q'\right)$ 
+iff either $q\cong q'\pmod{o}$ or $qq'\cong 1\pmod{p}$.
+\end{thm}
+
+The $\converse$ direction is easy.
+
+\begin{thm}[Perelman\cites{perelman1,perelman2,perelman3}]
+For $M$ and $M'$ closed three-manifolds, $M$ prime and not a lens space, then 
+$\pi_1\left(M\right)\simeqq \pi_1\left(M'\right)$ implies $M'\simeqq M$.
+\end{thm}
+
+So ``prime three-manifolds are pretty much determined by their fundamental group''.
+
+\begin{rmk}
+The restriction to prime is necessary here.
+Let $M$ be an oriented three-manifold such that $M$ is not homeomorphic (op) to $-M$. For
+example, $M = L\left(3,1\right)$ or the Poincar\'e homology sphere.
+
+Then $\pi_1\left(M\csum M\right)\simeqq \pi_1\left(M \csum \left(-M\right)\right)$, but by
+prime decomposition, $M\csum M\not\simeqq M\csum \left(-M\right)$.
+\end{rmk}

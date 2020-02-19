@@ -1,0 +1,272 @@
+\marginnote{Lecture 2; January 23, 2019}
+\begin{Proof}
+Write $\phi : G\to Q$ and regard $H$ as $\ker \phi < G$.
+Let $P_H$ (resp. $P_Q$) be positive cones for LO's on $H$ (resp. $Q$).
+Define $P = \phi^{-1}\left(P_Q\right)\dun P_H$.
+\begin{clm}
+$P$ is a positive cone for an LO on $G$.
+\end{clm}
+\begin{proof}
+We need to check (1) and (2) from \cref{lem:1.7}.
+Let $g,h\in P$. Then we want to show $gh\in P$.
+We have three cases.
+\begin{enumerate}[label = (\abc)]
+\item $g,h\in \phi^{-1}\left(P_Q\right)$: In this case
+$\phi\left(g\right),\phi\left(h\right)\in P_Q$, so $\phi\left(gh\right) =
+\phi\left(g\right)\phi\left(h\right)\in P_Q$. Therefore $gh\in \phi^{-1}\left(P_Q\right)$.
+
+\item $g,h\in P_H$: In this case $gh\in P_H$.
+
+\item $g\in \phi^{-1}\left(P_Q\right)$, $h\in P_H$:
+Then $\phi\left(gh\right) = \phi\left(g\right)\in P_Q$, so $gh\in
+\phi^{-1}\left(P_Q\right)$. Similarly $hg\in \phi^{-1}\left(P_Q\right)$.
+\end{enumerate}
+
+Now we need to check $P\dun P^{-1}\dun \left\{1\right\}$.
+But this follows from the fact that:
+\begin{equation}
+G = \left(H\minus \left\{1\right\}\right) \dun \phi^{-1}\left(Q\minus
+\left\{1\right\}\right)\dun \left\{1\right\}
+= \phi^{-1}\left(P_Q\right)\dun \phi^{-1}\left(P_Q^{-1}\right)
+\end{equation}
+since $H\minus \left\{1\right\} = P_H\dun P_H^{-1}$.
+\end{proof}
+
+We leave (2) as an exercise.
+[Hint: Recall $P$ is a positive cone for
+BO on $G$ iff it is a conjugacy invariant cone for an LO.]
+\end{Proof}
+
+\section{Orderability of manifold groups}
+
+\begin{exm}
+Let $X^2$ be the Klein bottle.
+This has fundamental group
+\begin{equation}
+K = \pi_1\left(X^2\right) = \lr{a,b \st b^{-1} a b = a^{-1}}
+\ . 
+\end{equation}
+This fits in the SES:
+\begin{equation}
+\begin{cd}
+1\ar{r}&
+\ZZ\ar{r}&
+K\ar{r}&
+\ZZ\ar{r}&
+1\\
+& \lr{a}\arrow[equal]{u}&
+b\arrow[mapsto]{r}&
+gm&
+\end{cd}
+\end{equation}
+which means $K$ is LO by \cref{thm:1.13}.
+
+Note that $K$ is \emph{not} BO. We have that $a > 1$ iff $b^{-1} a b > 1$, but this is
+$a^{-1}$, so $a^{-1} > 1$ which is a contradiction.
+
+Notice that $\ZZ$ has exactly two LO's. The usual one, and the opposite.
+Therefore, if we choose an LO on $\lr{a}$ and $K / \lr{a}$, this gives $4$ LO's on $K$
+determined by:
+\begin{enumerate}[label = (\iii)]
+\item $a> 1$, $b > 1$;
+\item $a> 1$, $b < 1$;
+\item $a< 1$, $b > 1$;
+\item $a< 1$, $b < 1$.
+\end{enumerate}
+\end{exm}
+
+\begin{thm}
+These are the only LO's on $K$.
+\label{thm:1.14}
+\end{thm}
+
+\begin{Proof}
+It suffices to show that each of these conditions determines a unique positive cone.
+\begin{enumerate}[label = (\iii)]
+\item $a> 1$, $b > 1$: 
+\begin{clm}
+$a^k < b$ for all $k\in \ZZ$.
+\end{clm}
+\begin{proof}
+$b < a^k$ implies $a^{-k}b < 1$. But $a^{-k} b = ba^k$ and $b > 1$, so $b < a^k$ implies
+$a^k>1$, which implies $ba^k > 1$ which is a contradiction.
+\end{proof}
+Note that every element in $K$ has a unique representative of the form $a^m b^n$
+for $m,n\in \ZZ$.
+\begin{clm}
+$a^m b^n > 1$ iff either $n > 0$ or $n =0$ and $m > 0$.
+\end{clm}
+\begin{proof}
+If $n = 0$, then this is clear. If $n > 0$, then $a^m b > 1$ for any $m$ by claim $1$ (for
+$k = -m$). But we also know $b > 1$ which implies $b^n > 1$, so we get $a^m b^n > 1$ for
+$n > 0$. On the other hand, if $m < 0$ then $a^m b^n = b^n a^{\pm m} = \left(a^{\mp m}
+b^{-n}\right)^{-1}$. Then we know $a^{\mp m}b^{-n} > 1$ by the case above, so its inverse
+is $<1$.
+\end{proof}
+
+If $<$ is an LO on $G$, and $\al : G\to G$ is an automorphism, then this induces an LO
+$<_\al$ on $G$ given by:
+$g <_\al h$ iff $\al\left(g\right) < \al\left(h\right)$.
+Now notice that there are automorphisms $\al_1 , \al_2$ of $K$ such that
+\begin{align}
+\al_1\left(a\right) = a\ , && \al_1\left(b\right) = b^{-1} \\
+\al_1\left(a\right) = a^{-1}\ , && \al_1\left(b\right) = b
+\ .
+\end{align}
+In particular, $\al_1$ is given by
+\begin{equation}
+\lr{a,b \st b^{-1} a b = a^{-1}} \simeqq \lr{a , b \st bab^{-1} = a^{-1}}
+\end{equation}
+and similarly for $\al_2$.
+
+Write $<_{\left(i\right)}$ for the unique LO on $K$ determined by (i). Then
+$<_{\left(ii\right)}$ is induced by $<_{\left(i\right)}$ and $\al_1$,
+$<_{\left(iii\right)}$ is induced by $<_{\left(i\right)}$ and $\al_2$,
+and $<_{\left(iv\right)}$ is induced by $<_{\left(i\right)}$ and $\al_1 \al_2$.
+\end{enumerate}
+\end{Proof}
+
+\begin{fact}
+If $G$ has only finitely many LO's, then the number of LO's is of the form $2^n$.
+\end{fact}
+
+\begin{exr}
+Show that for all $n\geq 0$ there exists a group $G$ with exactly $2^n$ LO's.
+\end{exr}
+
+\begin{cor}
+For any LO on $K$, if $h\in \lr{a}$, $g\in K\minus \lr{a}$, and $g > 1$, then $g > h$.
+\label{cor:1.15}
+\end{cor}
+
+\begin{proof}
+It is sufficient to check this for the first LO, since the other three are determined by
+the above automorphisms. 
+Let $a > 1$, $b > 1$.
+By claim 2 from above, we know $g = a^m b^n$ for $n > 0$. We now there is some $k$ such
+that $h = a^k$, and therefore
+\begin{equation}
+h^{-1} g = a^{m-k} b^n > 1
+\end{equation}
+by claim $2$, so $g > h$.
+\end{proof}
+
+\section{Three-manifold groups}
+
+Suppose $M$ is a closed, orientable, connected three-manifold.
+Then we might ask if $\pi_1\left(M\right)$ is LO? BO?
+
+Immediately we notice that not all such groups are.
+If $M$ is a lens space, then $\pi_1\left(M\right) \simeqq \ZZ / n$ for $n > 1$, so this is
+not LO.
+More generally, for $\pi_1\left(M\right)$ nontrivial and finite is not LO.
+Recall that if $M= M_1 \csum M_2$, then this implies $\pi_1\left(M\right)\simeqq
+\pi_1\left(M_1\right) * \pi_1\left(M_2\right)$.
+So, for example, if $M_1 \csum$ lens space, then $\pi_1\left(M\right)$ has torsion, so not
+LO.
+
+But at least some of them are.
+Consider $M\simeqq T^3 = S^1\times S^1 \times S^1$. Then $\pi_1\left(M\right) = \ZZ^3$
+is of course LO.
+Similarly $M = \bcsum_n\left(S^1 \times S^2\right)\simeqq F_n$, so $\pi_1\left(M\right)$
+is LO.
+
+We will show that there exist (three-manifold) groups that are torsion-free, but not LO.
+
+Let $p : T^2 \to X^2$ be a two-fold covering of the Klein bottle.
+Recall that
+\begin{equation}
+K > p_*\left(\pi_1\left(T^2\right)\right) = \lr{a , b^2} \simeqq \ZZ\times \ZZ
+\ .
+\end{equation}
+Let $N$ be the mapping cylinder of $p$, namely:
+\begin{equation}
+N = \left(T^2 \times I\right)\dun X^2 / \left( \left(x , 0\right)\sim p\left(x\right)
+\forall x\in T^2\right) \ .
+\end{equation}
+The orientation reversing curve representing $b$ doesn't lift. So $N$ is orientable.
+Note that $\p N \simeqq T^2$.
+There is a strong deformation retraction $N\to X^2$, so $\pi_1\left(N\right)\simeqq K$.
+Let $N_1$, $N_2$ be two copies of $N$.
+Write
+\begin{equation}
+\pi_1\left(N_i\right) = \lr{a_i , b_i \st b_i^{-1} a_i b_i = a_i^{-1}}
+\ .
+\end{equation}
+Notice that 
+$\pi_1\left(\p N_i\right)\simeqq \ZZ\times \ZZ = \lr{a_i , b_i^2} < \pi_1\left(N_i\right)$.
+Let $\phi : \p N_1 \to \p N_2$ be a homeomorphism.
+Let $M_\phi = N_1 \un_\phi N_2$. This is a closed, orientable three-manifold. Therefore
+\begin{equation}
+\pi_1\left(M_\phi\right) = \pi_1\left(N_1\right)*_{\ZZ\times \ZZ}
+\pi_1\left(N_2\right)\simeqq K_1 *_{\ZZ\times \ZZ} K_2 \ .
+\end{equation}
+Since $K$ is torsion-free, $\pi_1\left(M_\phi\right)$ is torsion-free.
+But in fact we have the following theorem.
+
+\begin{thm}
+If $H_1\left(M_\phi\right)$ is finite, then $\pi_1\left(M_\phi\right)$ is not LO.
+\label{thm:1.16}
+\end{thm}
+
+\begin{rmk}
+We will see later that for $M$ a prime three-manifold with $H_1\left(M\right)$ infinite
+has $\pi_1\left(M\right)$ LO.
+\end{rmk}
+
+\begin{proof}
+$\phi$ is determined up to isotopy, so the resulting manifold $M_\phi$ depends only on
+$\phi_* : H_1\left(\p N_1\right)\to H_1\left(\p N_2\right)$.
+We know
+\begin{align}
+\ZZ\dsum \ZZ = \ZZ\lr{a_1 , 2b_1}
+&&
+\ZZ\dsum \ZZ = \ZZ\lr{a_2 , 2b_2}
+\end{align}
+so $\phi_*$ is given by some $2\times 2$ matrix
+with $\ZZ$ coefficients
+\begin{equation}
+\begin{bmatrix}
+p & r \\ q & s
+\end{bmatrix}
+\end{equation}
+with determinant $ps - qr = \pm 1$. 
+Specifically we have:
+\begin{align}
+\phi_*\left(a_1\right) &= pa_2 + 2qb_2 \\
+\phi_*\left(2b_1\right) &= ra_2 + 2s b_2\ .
+\end{align}
+Now we have
+$H_1\left(N_i\right) = \ZZ\dsum \ZZ_2$ with basis $b_i$ and $a_i$ respectively. 
+Then $H_q\left(M_\phi\right)$ is presented by
+\begin{equation}
+A = \begin{bmatrix}
+2 & 0 & 0 & 0 \\
+0 & 0 & 2 & 0 \\
+-1 & 0 & p & 2q \\
+0 & -2 & r & 2s
+\end{bmatrix}
+\ .
+\end{equation}
+where we order the basis as $\left\{a_1 , b_1 , a_2 , b_2\right\}$.
+Interchanging columns $2$ and $3$ we get
+\begin{equation}
+\det A = 4\abs{\det 
+\begin{bmatrix}
+0 & 2q \\ -2 & 2s
+\end{bmatrix}} = 
+16 \abs{q}
+\ .
+\end{equation}
+Therefore $H_1\left(M_\phi\right)$ is finite iff $q\neq 0$ iff $\phi_*\left(a_1\right)\neq
+\pm a_2$.
+
+Suppose $\pi_1\left(M_\phi\right)$ is LO. Then we would get an induced LO on the common
+boundary $\p N_1 = \p N_2$.
+But there are only $4$ LO's on $\pi_1\left(N_i\right)$ (for $i \in \left\{1,2\right\}$).
+By \cref{cor:1.15}, for any LO on $\pi_1\left(N\right)$, $\lr{a}$ is the unique
+$\ZZ$-summand of 
+$\pi_1\left(\p N\right) = \lr{a , b^2}$ such that if $h\in \lr{a}$ and $g\in \pi_1\left(\p
+N\right)\minus \left\{1\right\}$, $g > 1$, then $g > h$.
+Therefore $\phi_*\left(a_1\right) = \pm a_2$ which is a contradiction.
+\end{proof}

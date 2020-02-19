@@ -1,0 +1,267 @@
+\marginnote{Lecture 5; February 4, 2020}
+
+\begin{lem}
+Suppose $B\sub X$. Then
+\begin{align*}
+\left\{A\sub X \st B\not \sub A\right\}
+&&
+\left\{A\sub X \st A\cap B\neq \emp\right\}
+\end{align*}
+are open subsets of $\cS\left(X\right)$.
+\label{lem:2.1}
+\end{lem}
+
+\begin{proof}
+\begin{align*}
+\left\{A\sub X \st B\not \sub A\right\} &=
+\bun_{b\in B} \left\{A\sub X \st b\not\in A\right\} = \bun_{b\in B} V_b
+\end{align*}
+so it is open. The argument for the other set is similar.
+\end{proof}
+
+If $G$ is a group, let 
+\begin{equation}
+\LO\left(G\right) = \left\{\text{positive cones}\sub G\right\}\sub \cS\left(G\right)
+\end{equation}
+and equip it 
+with the subspace topology. 
+We call this the \emph{space of left-orders on $G$}.
+
+\begin{exm}
+$\LO\left(\ZZ\right) = \pt \dun \pt$.
+$\LO\left(\ZZ\times \ZZ\right)$ is the cantor set.
+\end{exm}
+
+\begin{thm}
+$\LO\left(G\right)$ is closed in $\cS\left(G\right)$ and hence compact.
+\label{thm:2.2}
+\end{thm}
+
+\begin{proof}
+We show $\cS\left(G\right)\minus \LO\left(G\right)$ is open. Suppose $A\in
+\cS\left(G\right)\minus \LO\left(G\right)$, i.e. $A\sub G$ is not a positive cone. 
+So either:
+\begin{enumerate}[label = (\iii)]
+\item $\exists g,h\in A$ such that $gh\not\in A$ or
+\item $\exists g\in G$ such that $g,g^{-1} \in A$ or
+\item $1\in A$ or
+\item $\exists g$, $g\neq 1$ such that $g\not\in A$ and $g^{-1} \not\in A$.
+\end{enumerate}
+Now the point is that these are open conditions since we can write them in terms of the
+$U_x$'s and $V_x$'s.
+In particular:
+\begin{align*}
+\left(i\right) \iff
+A\in U_g\cap U_h \cap V_{gh}
+&&
+\left(ii\right)\iff A\in U_g\cap U_{g^{-1}} \\
+\left(iii\right)\iff A\in U_1 
+&&
+\left(iv\right) \iff A\in \bun_{g\neq 1} \left(V_g \cap V_{g^{-1}}\right) \ .
+\end{align*}
+Therefore $\LO\left(G\right)$ is compact, Hausdorff, and totally disconnected.
+\end{proof}
+
+Similarly one can define the space of biorders on $G$, $\BO\left(G\right)$, to be 
+the set of conjugation invariant positive cones in $G$.
+
+\begin{exr}
+Show that $\BO\left(G\right)$ is closed inside of $\LO\left(G\right)$.
+\end{exr}
+
+Therefore $\BO\left(G\right)$ is compact, Hausdorff, and totally disconnected.
+
+\section{The cantor set}
+
+The cantor set $C\sub I\sub \RR$ is defined as follows.
+First write
+\begin{align*}
+C_1 &= \left[0,1/3\right] \un \left[2/3 , 1\right] \\
+C_2 &= \left(\left[0,1/9\right]\un \left[2/9, 1/3\right]\right)\un
+\left(\left[2/3, 7/9\right]\un \left[8/9, 1\right]\right) \\
+\ldots &
+\end{align*}
+then define
+\begin{equation}
+C = \binter_{n = 1}^\infty C_n \ .
+\end{equation}
+The idea is that we keep removing the middle thirds. 
+
+$C$ is uncountable, totally-disconnected, closed in $I$. 
+Therefore it is also compact and Hausdorff.
+This is a very surprising example.
+We can easily write down something uncountable and totally-disconnected, such as the
+irrationals, but they do not form a compact set.
+
+Any $x\in I$ has a ternary expansion:
+\begin{equation*}
+x = 0.\, x_1 x_2 \ldots = \sum_{n = 1}^\infty \frac{x_n}{3^n}
+\end{equation*}
+which is unique up to:
+\begin{equation*}
+\ldots x_k 22\ldots = \ldots \left(x_{k+1}\right)0 0 \ldots
+\ .
+\end{equation*}
+Now notice
+\begin{align*}
+x_1 = 1 && \iff && x\in \left(1/3 , 2/3\right)
+\end{align*}
+with the convention that 
+\begin{equation*}
+\frac{1}{3} = 0.022 \ldots
+\ .
+\end{equation*}
+Similarly (with the same convention) we have
+\begin{align*}
+x_1 \neq 1, x_2 = 1 && \iff &&
+x\in \left(1/9 , 2/9\right)\un\left(7/9 , 8/9\right)
+\end{align*}
+and so on. Then 
+\begin{equation}
+C = \left\{x\in I \st x= 0.\, x_1 x_2 \ldots \st \forall n, x_n = 0 \text{ or } 2\right\}
+\ .
+\end{equation}
+Now give $\left\{0,2\right\}^\NN$ the product topology. 
+
+\begin{exr}
+Show that the map sending
+\begin{equation}
+0. x_1 x_2 \ldots \mapsto \left(x_1 , x_2 , \ldots\right)
+\end{equation}
+defines a homeomorphism
+\begin{equation}
+C\lto{\simeqq} \left\{0,2\right\}^\NN
+\ .
+\end{equation}
+\end{exr}
+
+Now recall that $\LO\left(G\right)$ is compact in $\left\{0,1\right\}^G$, so if $G$
+is countable, then $\LO\left(G\right)$ is homeomorphic to a subspace of $C$.
+
+We say $x\in X$ is \emph{isolated} if $\left\{x\right\}$ is open. 
+We say $X$ is perfect if it has no isolated points.
+As it turns out, the Cantor set is perfect.
+
+\begin{thm*}
+If $X$ is a compact, totally-disconnected, and perfect metric space, then $X\simeqq C$.
+\end{thm*}
+
+Therefore, if $G$ is countable, $\LO\left(G\right)\neq \emp$, and has no isolated points,
+then $\LO\left(G\right)\simeqq C$.
+
+\begin{exm}
+In 2004
+\cite{sikora} it was shown
+that if $n > 1$ then $\LO\left(\ZZ^n\right) = \BO\left(\ZZ^n\right)\simeqq
+C$.
+\end{exm}
+
+\begin{exm}
+In 1985 \cite{mc} it was shown that
+$\LO\left(F_n\right)\simeqq C$.
+It is unknown if $\LO\left(F_n\right)$ has isolated points.
+\end{exm}
+
+\begin{rmk}
+As it turns out, the braid group is LO. The first proof of this fact was 
+not topological, so topologists started to think of a topological proof. When
+someone asked
+Thurston, he said 
+``of course the braid group is left-orderable!''
+\end{rmk}
+
+If $X\sub G$, let $S\left(X\right)$ be the semigroup generated by $X$ in $G$. This is the same 
+as the non-empty product of elements in $X$.
+There is a characterization of left orderability in terms of finite subsets of $G$.
+
+\begin{thm}
+$G$ is LO iff for all finite $F\sub G\minus \left\{1\right\}$, there exists $\e : F\to
+\left\{\pm 1\right\}$ such that
+\begin{equation}
+1\not \in S\left(\left\{f^{\e\left(f\right)} \st f\in F\right\}\right) \left(
+= S\left(F , \e\right)
+\right)
+\ .
+\label{eqn:5*}
+\end{equation}
+\label{thm:2.3}
+\end{thm}
+
+\begin{rmk}
+It follows from this that, given a solution to the word problem in $G$, there exists a
+machine such that if $G$ is not LO, the machine will eventually 
+tell you that.
+Nathan Dunfield has an explicit algorithm for three-manifold groups.
+\end{rmk}
+
+\begin{rmk}
+If we take the $n$-fold cyclic branch cover of the knot $5_2$, then 
+we can consider
+$\pi_1\left(\Sigma_n \left(5_2\right)\right)$. For $n = 2$, this is a lens space
+so $\pi_1$ is finite. 
+It is also not LO for $n = 3,4,$ and $5$. But it is unknown for $n = 6,7$, and $8$.
+(If the $L$-space conjecture is true,\footnote{Which is looking quite likely. It has been
+checked for something like three-hundred thousand manifolds.}
+then it should be LO for these values of $n$.)
+For $n\geq 9$ it is known to be LO.
+\end{rmk}
+
+\begin{Proof}
+$\left(\implies\right)$:
+Define
+\begin{align*}
+\e\left(f\right) = 
+\begin{cases}
++1 & f > 1 \\
+-1 & f < 1
+\end{cases}
+\ .
+\end{align*}
+
+$\left(\converse\right)$: Let $F\sub G\minus \left\{1\right\}$ be finite, $\e : F\to
+\left\{\pm 1\right\}$. Define
+\begin{equation*}
+Q\left(F , \e\right) \ceqq \left\{Q\sub G\minus \left\{1\right\} \st S\left(F , \e\right)
+\sub Q, S\left(F , \e\right)^{-1} \cap Q = \emp\right\} \ .
+\end{equation*}
+Note that $Q\left(F , \e\right)\neq \emp$ iff \eqref{eqn:5*} holds.
+Let
+\begin{equation*}
+Q\left(F\right) = \un_\e Q\left(F , \e\right) \ .
+\end{equation*}
+Note this is a finite union.
+\begin{clm}
+$Q\left(F\right)$ is closed in $\cS\left(G\right)$.
+\end{clm}
+\begin{proof}
+It is sufficient to show that $Q\left(F , \e\right)$ is closed, i.e. 
+$\cS\left(G\right)\minus Q\left(F , \e\right)$ is open. Suppose $A\sub G$, $A\not \in
+Q\left(F , \e\right)$ i.e. either $1\in A$, or $S\left(F , \e\right)\not \sub A$, or
+$S\left(F , \e\right)^{-1} \cap A \neq \emp$. These conditions are all open by
+\cref{lem:2.1}. 
+\end{proof}
+Note that if $F\sub F'$, then
+\begin{equation}
+S\left(F , \restr{\e'}{F'}\right)\sub S\left(F' , \e'\right)
+\end{equation}
+and therefore
+\begin{equation}
+Q\left(F'\right) \sub Q\left(F\right) \ .
+\end{equation}
+Let $F_1, F_2 , \ldots , F_n$ be finite subsets of $G\minus \left\{1\right\}$.
+Then
+\begin{equation*}
+\binter_{i = 1}^n Q\left(F_i\right) \sups Q\left(F_1 \un F_2 \un \ldots \un F_n\right)\neq
+\emp
+\end{equation*}
+since \eqref{eqn:5*} holds.
+This means $\left\{Q\left(F\right)\right\}$ has the \emph{finite intersection property}
+(FIP) and each one is closed. Therefore, since $\cS\left(G\right)$ is compact, 
+\begin{equation*}
+\binter_{F\sub G\minus \left\{1\right\}\text{ finite}} Q\left(F\right) \neq \emp
+\ .
+\end{equation*}
+So let $P\in \binter Q\left(F\right)$. 
+\begin{clm}
+$P$ is a positive cone for $G$.
+\end{clm}

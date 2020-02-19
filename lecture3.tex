@@ -1,0 +1,278 @@
+\marginnote{Lecture 3; January 28, 2020}
+
+Let $<$ be an STO on a set $X$.
+Let $\cB\left(X , <\right)$ be the group of $<$-preserving bijections $X\to X$.
+
+\begin{thm}
+$\cB\left(X, <\right)$ is always LO.
+\label{thm:1.17}
+\end{thm}
+
+\begin{proof}
+Let $\cless$ be a WO on $X$.
+Let $f , g\in \cB\left(X , <\right)$ such that $f\neq g$. 
+Write 
+\begin{equation}
+\left[f\neq g\right] = \left\{x\in X \st f\left(x\right)\neq g\left(x\right)\right\}\neq
+\emp
+\ .
+\end{equation}
+Let $x_0$ be the $\cless$-least element of $\left[f\neq g\right]$.
+Define
+\begin{equation}
+f < g \iff f\left(x_0\right) < g\left(x_0\right) \ .
+\end{equation}
+Then we claim that this is an LO on $\cB\left(X , <\right)$.
+Left-invariance is clear. To see this is a STO we need ``trichotomy''
+and transitivity. Trichotomy is easy, and transitivity follows from the same argument as
+the proof of \cref{thm:1.4}.
+\end{proof}
+
+\begin{exm}
+Let $<$ be the standard order on $\RR$.
+Then $\cB\left(\RR , <\right)$ consists of the orientation-preserving homeomorphisms $\RR
+\to \RR$, written $\homeo_+\left(\RR\right)$.
+\end{exm}
+
+\begin{cor}
+$\homeo_+\left(\RR\right)$ is LO.
+\label{cor:1.18}
+\end{cor}
+
+\begin{rmk}
+For $x\in \RR$, let $\cless_x$ be a WO on $\RR$ such that $x$ is the $\cless_x$-least
+element of $\RR$.
+Let $<_x$ be the LO on $\homeo_+\left(\RR\right)$ induced by $\cless_x$, as in the proof
+of \cref{thm:1.17}. Given $x\neq y\in \RR$, there exists $g\in \homeo_+\left(\RR\right)$
+such that
+$g\left(x\right) > x$ and $g\left(y\right) < y$. But this means
+\begin{align*}
+g<_x 1 && g<_y 1
+\ .
+\end{align*}
+which implies $<_x\neq <_y$.
+Therefore $\homeo_+\left(\RR\right)$ has uncountably many LO's.
+\end{rmk}
+
+\begin{rmk}
+It is a fact that the number of LO's on a group $G$ is either finite (and of the form
+$2^n$) or uncountable.
+\end{rmk}
+
+\begin{cor}
+A group $G$ is LO iff $G$ acts faithfully\footnote{Recall this means $g\left(x\right)= x$
+for all $x\in X$ iff $g = 1$.} on a STO'd set $\left(X , <\right)$.
+\end{cor}
+
+\begin{proof}
+$\left(\converse\right)$: This follows from \cref{thm:1.17}.
+
+$\left(\implies\right)$: $G$ acts faithfully on $\left(G , <\right)$ by left
+multiplication.
+\end{proof}
+
+\Cref{cor:1.18} implies that any subgroup of $\homeo_+\left(\RR\right)$ is LO. 
+E.g. one can show that $F_2$ (the free group of rank $2$) is a subgroup of
+$\homeo_+\left(\RR\right)$.
+(This is another way to show that countable free groups are LO.)
+In fact this characterizes countable LO groups.
+
+\begin{thm}
+Let $G$ be a countable group. 
+Then $G$ is LO iff there exists an injective homomorphism $G\to \homeo_+\left(\RR\right)$.
+\label{thm:1.20}
+\end{thm}
+
+\begin{proof}
+$\left(\converse\right)$: This follows from \cref{cor:1.18}.
+
+$\left(\implies\right)$: We actually prove something slightly stronger. This will follow
+from \cref{thm:1.21}.
+\end{proof}
+
+\begin{thm}
+Let $\left(G , <\right)$ be a countable group with an LO. Then there exists a LO on
+$\homeo_+\left(\RR\right)$ and an order-preserving injective homomorphism
+$\left(G , <\right)\to \left(\homeo_+\left(\RR\right) , <\right)$.
+\label{thm:1.21}
+\end{thm}
+
+\begin{proof}[Sketch of proof]
+Let $<$ be an LO on $G$. If $G = \left\{1\right\}$ this is immediate, so assume $G\neq
+\left\{1\right\}$. Therefore it is infinite, since LO groups are torsion free.
+Let $g_1 , g_2 , \ldots$ be some enumeration of the elements of $G$.
+
+Define an embedding $e : G\to \RR$ by
+$e\left(g_1\right) = 0$, and inductively by:
+\begin{enumerate}[label = (\iii)]
+\item If $g_{n+1} 
+\begin{Bmatrix}
+> \\ <
+\end{Bmatrix}
+g_i$ for all $1\leq i\leq n$, then set
+\begin{equation}
+e\left(g_{n+1}\right) = 
+\begin{Bmatrix}
+\max \left\{e\left(g_i\right) \st 1\leq i\leq n\right\} + 1 \\
+\min \left\{e\left(g_i\right) \st 1\leq i\leq n\right\} - 1 
+\end{Bmatrix}
+\ .
+\end{equation}
+\item Otherwise let
+\begin{align*}
+g_l &= \max\left\{ g_i \st 1\leq i\leq n , g_i < g_{n+1}\right\} \\
+g_r &= \min\left\{g_i \st 1\leq i\leq n , g_i > g_{n+1}\right\}
+\end{align*}
+and set
+\begin{equation*}
+e\left(g_{n+1}\right) = 
+\frac{e\left(g_l\right) + e\left(g_r\right)}{2} \ .
+\end{equation*}
+\end{enumerate}
+\begin{rmk}
+\begin{enumerate}
+\item $e$ is order-preserving, i.e. $a< b\implies e\left(a\right) < e\left(b\right)$.
+\item $e\left(g_{n+1}\right)\in \ZZ$ iff (i) holds.
+\item If $g > 1$ then $g^2 > g$ and $g^{-1} < g$. 
+If $g < 1$ then $g^2 < g$ and $g^{-1} > g$, which implies $\ZZ\sub e\left(G\right) =
+\Gamma$.
+\item $G$ acts on $\Gamma$ by 
+$g\left(e\left(a\right)\right) = e\left(ga\right)$. 
+In fact, $G$ acts on $\left(\Gamma  , <\right)$ (where $<$ is the restriction of $<$ on
+$\RR$) since
+$e\left(a\right) < e\left(b\right)$ iff $a<b$ iff $ga < gb$ iff
+$e\left(ga\right) < e\left(gb\right)$ iff $g\left(e\left(a\right)\right) <
+g\left(e\left(b\right)\right)$.
+\end{enumerate}
+\end{rmk}
+
+To see that
+this action extends to an action of $G$ on $\RR$, we have a few steps.
+\begin{enumerate}[label=Step \numbers:]
+\item The action of $G$ on $\Gamma$ is continuous,
+\label{item:step1}
+\item The action of $G$ on $\Gamma$ extends to a continuous action of $G$ on $\bar
+\Gamma$.
+\item $\RR\minus \bar \Gamma$ is a countable $\dun$ of open intervals $\left(a_i ,
+b_i\right)$;
+the action of $G$ is defined on $\left\{a_i , b_i\right\}$; and extends to
+$\left[a_i , b_i\right]$.
+\end{enumerate}
+
+Note, to ensure \ref{item:step1}, it is not enough to take $e$ to be an order-preserving
+of $G$ in $\RR$. It must be continuous.
+
+To define an LO on $\homeo_+\left(\RR\right)$ that restricts to the LO on $\Gamma$ from
+$G$, first pick any $\gamma \in \Gamma$.
+Then $g > 1$ (resp. $<1$) iff $g\left(\gamma\right) > \gamma$ (resp. $< \gamma$).
+Let $\cless$ be a WO on $\RR$ such that $\gamma$ is the $\cless$-least element of $\RR$.
+Then let $\dless$ be the LO on $\homeo_+\left(\RR\right)$ induced by $\cless$. Then
+$g > 1$ (resp. $<1$) in $G$ iff $g\dgr 1$ (resp. $\dless$) in $\homeo_+\left(\RR\right)$.
+\end{proof}
+
+\section{Group rings}
+
+Let $R$ be a ring (with $1$). 
+\begin{itemize}
+\item $a\in R$ is a \emph{unit} if there exists $b\in R$ such that $ab = ba = 1$.
+\item $a\in R$ is a \emph{zero-divisor} if $a\neq 0$ and there exists $b\neq 0$ such that either
+$ab = 0$ or $ba = 0$.
+\item $a\in R$ is a \emph{non-trivial idempotent} if $a^2 = a$ but $a\neq 0$ and $a\neq 1$.
+\end{itemize}
+Let $G$ be a group and $R$ a ring. Then the \emph{$R$-group ring of $G$} consists of
+formal sums:
+\begin{equation}
+RG \ceqq \left\{\sum r_g g \st g\in G , r_g\in R, r_G\neq 0\forall \text{ but f'tly many }
+g\in G\right\}
+\ .
+\end{equation}
+$RG$ is a ring with respect to the obvious operations. For $g\in G$ and $r\in R$ a unit,
+then $rg$ is a unit in $RG$.
+A unit in $RG$ is \emph{non-trivial} if it is not of this form.
+
+\begin{rmk}
+If $\tilde X\to X$ is a universal covering, then $\pi = \pi_1\left(X\right)$ acts on
+$\tilde X$ so $H_*\left(\tilde X , \ZZ\right)$ is a $\ZZ \pi$-module.
+\end{rmk}
+
+\begin{thm}
+Suppose $G$ has non-trivial torsion, and $K$ is a field of characteristic $0$.
+\begin{enumerate}
+\item $KG$ has zero divisors,
+\item $KG$ has non-trivial units, 
+\item $KG$ has non-trivial idempotents.
+\end{enumerate}
+\label{thm:1.22}
+\end{thm}
+
+\begin{proof}
+Let $g\in G$ have order $n\geq 2$.
+Define 
+\begin{equation*}
+\sigma = 1 + g + g^2 + \ldots + g^{n-1} \in KG
+\ .
+\end{equation*}
+First notice that
+\begin{equation}
+g\sigma = \sigma
+\label{eqn:*}
+\end{equation}
+which implies
+$\left(1-g\right)\sigma = 0$
+so we have zero divisors.
+
+\eqref{eqn:*} also gives us that $\sigma^2 = n\sigma$.
+Therefore
+\begin{equation*}
+\left(1-\sigma\right)\left(1 - \frac{1}{n-1} \sigma\right) = 1
+\end{equation*}
+so we have a nontrivial unit for $n > 2$. 
+If $n = 2$, $1 - \sigma = -g$, but we still have:
+\begin{equation}
+\left(1 - 2\sigma\right)\left(1 - \frac{2}{3} \sigma\right) = 1 \ .
+\end{equation}
+
+Finally, we have that
+\begin{equation}
+\left(\frac{1}{n} \sigma\right)^2 = \left(\frac{1}{n^2}\right)\sigma^2 = \frac{1}{n}
+\sigma
+\end{equation}
+so we have nontrivial idempotents.
+\end{proof}
+
+Note that the proof of (1) works even for $\ZZ G$.
+
+\begin{rmk}
+If $n\not\in \left\{2,3,4,6\right\}$ then 
+$\ZZ G$ has nontrivial units.
+This is a theorem of Higman.
+\end{rmk}
+
+\begin{exm}
+For $n = 5$, 
+\begin{equation}
+\left(1 - g - g^4\right)\left(1 - g^2 - g^3\right) = 1 \ .
+\end{equation}
+\end{exm}
+
+But what if $G$ is torsion free?
+This brings us to the famous Kaplansky conjectures.
+
+\begin{con}[Kaplansky]
+If $G$ is torsion free and $K$ is a field, then:
+\begin{enumerate}[label = \III]
+\item (Units conjecture): $KG$ has no non-trivial units,
+\label{KI}
+\item (Zero-divisors conjecture): $KG$ has no zero divisors,
+\label{KII}
+\item (Idempotents conjecture): $KG$ has no non-trivial idempotents.
+\label{KIII}
+\end{enumerate}
+\end{con}
+
+\begin{rmk}
+Clearly
+\ref{KII} implies \ref{KIII} since $a^2 = a$ implies $a\left(a-1\right) = 0$, which by
+\ref{KII} implies $a = 0$ or $a = 1$ which implies \ref{KIII}.
+In fact they're all equivalent, but this is nontrivial to see.
+\end{rmk}
